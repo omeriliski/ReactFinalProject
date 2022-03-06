@@ -2,10 +2,12 @@
 
 
 .header-wrapper{
+width: 100%;
     position: absolute;
     display: flex;
     flex-direction: row;
-    align-items:center;
+    align-items: center ;
+    justify-content: space-around  ;
 
     z-index: 1;
     left: 0%;
@@ -16,6 +18,10 @@
     width: 100%;
     @include DropShadow;
     @include DarkBg;
+
+    img{
+        @include Padding16px
+    }
 
 }
 
