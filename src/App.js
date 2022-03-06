@@ -1,10 +1,11 @@
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from "./pages/Home";
-import './App.css';
+import './App.scss';
 import "./firebase";
 import { getAuth, signOut } from 'firebase/auth'
 import {Routes,Route,useNavigate} from "react-router-dom";
+
 
 function App() {
   const auth = getAuth();

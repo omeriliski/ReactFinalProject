@@ -1,0 +1,18 @@
+@import "../mixins.scss";
+
+
+.interactions-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .button-feedback{
+@include BorderWhiteR16;
+@include CommentsButtons;
+background: none;
+padding-inline: 16px;
+
+
+
+    }
+}

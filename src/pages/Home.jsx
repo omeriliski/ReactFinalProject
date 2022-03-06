@@ -1,9 +1,10 @@
-const Home=()=>{
-    return(
-        <div>
-            Home Page for Jakub
-        </div>
-    )
-}
+import TextPost from "../posts/Posttypes"
+
+const Home = () => {
+  return (
+  <div>
+      <TextPost/>
+  </div>);
+};
 
 export default Home;

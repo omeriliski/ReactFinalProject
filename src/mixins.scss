@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap');
+
+//COLORS:
+@mixin YellowTxt {
+    color: #FFFF00;
+}
+@mixin WhiteTxt {
+    color: white;
+}
+
+@mixin YellowBg {
+    background-color: #FFFF00;
+}
+
+//BORDERS
+@mixin BorderWhiteR16{
+    border: white solid 1px;
+    border-radius: 16px;
+}
+
+//TYPO:
+@mixin CommentsButtons {
+    //styleName: M_Comments;
+    font-family: 'Manrope';
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: white;
+
+::hover{
+@include YellowTxt()}    
+}
+
+@mixin TextLeft {
+    text-align: left;
+}
+
+@mixin PostTitle {
+    font-family: "Manrope";
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 19px;
+}
+
+@mixin PostBodyText {
+    font-family: "Manrope";
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 19px;
+}
+
+@mixin PostUserName {
+    font-family: 'Manrope';
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 19px;
+}
+
+@mixin MHeadline1 {
+    font-family: "Manrope";
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 39px;
+    /* or 130% */
+    letter-spacing: -0.01em;
+}
