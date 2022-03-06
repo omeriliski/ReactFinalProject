@@ -1,9 +1,12 @@
-import TextPost from "../posts/Posttypes"
+import {TextPost,  AwardPost, BildTextPost, ShortTextPost } from "../posts/Posttypes"
 
 const Home = () => {
   return (
   <div>
       <TextPost/>
+      <ShortTextPost/>
+      <BildTextPost/>
+      <AwardPost/>
   </div>);
 };
 

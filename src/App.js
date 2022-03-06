@@ -5,6 +5,7 @@ import './App.scss';
 import "./firebase";
 import { getAuth, signOut } from 'firebase/auth'
 import {Routes,Route,useNavigate} from "react-router-dom";
+import { Header } from './Header';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Header></Header>
       <Routes>
         <Route path='/home' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>

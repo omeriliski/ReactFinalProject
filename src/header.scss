@@ -1,0 +1,30 @@
+@import "./mixins.scss";
+
+
+.header-wrapper{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+
+    z-index: 1;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 22.53%;
+    height: 56px;
+    width: 100%;
+    @include DropShadow;
+    @include DarkBg;
+
+}
+
+.logout-button{
+            @include BorderWhiteR16;
+        @include BorderWhiteR16;
+        @include CommentsButtons;
+        background: none;
+        padding-inline: 16px;
+            @include BorderRadius32px;
+            height: 24px;
+}

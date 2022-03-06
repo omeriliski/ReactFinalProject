@@ -11,6 +11,12 @@
 @mixin YellowBg {
     background-color: #FFFF00;
 }
+@mixin YellowBorder {
+    border: #FFFF00 1px solid;
+}
+@mixin DarkBg {
+        background: #2E2E2E;
+}
 
 //BORDERS
 @mixin BorderWhiteR16{
@@ -18,7 +24,43 @@
     border-radius: 16px;
 }
 
+//PADDINGS INLINE
+@mixin Padding16px {
+padding-inline: 16px;    
+}
+@mixin Padding8px {
+padding-inline: 8px;    
+}
+
+// MARGINS Y
+@mixin Margin8 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    
+}
+@mixin Margin16 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    
+}
+@mixin Margin0 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+}
+
 //TYPO:
+@mixin typo-extras {
+    font-family: 'Manrope';
+    font-size: 12px;
+    line-height: 15px;
+}
+@mixin typo-extras-semibold {
+    font-family: 'Manrope';
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+}
 @mixin CommentsButtons {
     //styleName: M_Comments;
     font-family: 'Manrope';
@@ -65,4 +107,19 @@
     line-height: 39px;
     /* or 130% */
     letter-spacing: -0.01em;
+}
+
+//DROP SHADOWS
+@mixin DropShadow{
+  filter:  drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.35)) drop-shadow(-3px -3px 8px rgba(100, 100, 100, 0.4));
+}
+
+//BORDERS
+@mixin BorderRadius16px {
+    border-radius: 16px;
+    
+}
+@mixin BorderRadius32px {
+    border-radius: 32px;
+    
 }

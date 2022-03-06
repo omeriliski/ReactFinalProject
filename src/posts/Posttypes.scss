@@ -1,6 +1,7 @@
 @import "../mixins.scss";
 
 .card-div {
+    @include Margin16;
     position: relative;
     width: 335px;
     left: 0px;
@@ -55,6 +56,30 @@
             .txt-title{
                 @include PostTitle;
             }
+            .image-src{
+                width: 100%;
+                @include BorderRadius16px;
+                
+            }
     }
 
+}
+
+.card-headline{
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 34px;
+    @include WhiteTxt;
+    @include Margin16;
+    @include TextLeft;
+}
+.card-text{
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 19px;
+    @include WhiteTxt;
 }
