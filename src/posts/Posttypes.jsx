@@ -1,27 +1,18 @@
 import "./Posttypes.scss";
-import VotingUp  from "./src/votingUp.svg";
+import More from "./img/more.svg"
+import { UsersInteractions } from "./UsersInteractions";
 
-export function UsersInteractions(){
-return (
-  <div className="interactions-container">
-    <div className="voting-feedback">
-      <i className="voting-up" src={VotingUp}></i>{" "}
-    </div>
-  </div>
-);
-}
 
 export default function TextPost() {
   return (
     <div className="card-div">
       <div className="card-header">
         {" "}
+        <div className="user-header">
         <div className="user-pic"></div>{" "}
         <p className="user-name">Laura Konig</p>
-        <i
-          className="more"
-          src="/Users/VelVogel/www/DCI/React/react-final-project/src/posts/src/more.svg"
-        ></i>
+          </div>
+        <img className="more" src={More} />
       </div>
       <div className="post-text-content">
         <div className="txt-title">
@@ -35,6 +26,7 @@ export default function TextPost() {
           </p>
         </div>
       </div>
+      <UsersInteractions/>
     </div>
   );
 }
