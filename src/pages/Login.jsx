@@ -1,6 +1,8 @@
-import {useRef} from "react";
+import {useRef, useContext} from "react";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+import {Context} from "../App";
+
 
 const Login=()=>{
     const email = useRef();
@@ -8,12 +10,16 @@ const Login=()=>{
     const auth = getAuth();
     const navigate = useNavigate();
 
+    const {setCurrentUser} = useContext(Context);
+
     const eventHandler=(e)=>{
         e.preventDefault();
         signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-        .then(()=>{
-            console.log('logged in :>> ');
-            navigate("/home");
+        .then((res)=>{
+            console.log('logged in :>> ',res.user);
+            localStorage.setItem("user",JSON.stringify(res.user));
+            setCurrentUser(res.user);
+            navigate("/");
         })
         .catch (e=>{
           alert(e.message)
@@ -21,7 +27,7 @@ const Login=()=>{
     }
     return(
         <div>
-            <h1>Login</h1>
+            <h1>Anmelden</h1>
             <form onSubmit={eventHandler}>
                 <div>
                     <input type="email" ref={email}/>
@@ -32,6 +38,7 @@ const Login=()=>{
                 <div>
                     <input type="submit" value="Login"/>
                 </div>
+                <NavLink to="/register">Registrieren</NavLink>
             </form>
         </div>
     )
