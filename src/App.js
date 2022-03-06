@@ -2,12 +2,13 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from "./pages/Home";
 import CreatePost from './pages/CreatePost';
-import './App.css';
+import './App.scss';
 import "./firebase";
 import {Routes,Route, Navigate} from "react-router-dom";
 import { useEffect, useState,createContext } from 'react';
 
 export const Context = createContext();
+
 
 function App() {
   const [currentUser,setCurrentUser] = useState(null);

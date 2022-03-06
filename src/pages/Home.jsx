@@ -1,7 +1,7 @@
 import {useContext} from "react";
 import {Context} from "../App";
-import { useEffect } from "react";
 import Navbar from '../components/Navbar';
+import TextPost from "../posts/Posttypes"
 
 const Home=()=>{
     const {currentUser, setCurrentUser, getUser}=useContext(Context);
@@ -21,6 +21,7 @@ const Home=()=>{
         <div>
             <Navbar/>
             Welcome {currentUser?.email}
+            <TextPost/>
         </div>
     )
 }
