@@ -1,6 +1,6 @@
 import {useRef} from "react";
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
-import {useNavigate} from "react-router-dom";
+import {useNavigate, NavLink} from "react-router-dom";
 
 const Register=()=>{
     const username = useRef();
@@ -39,8 +39,9 @@ const Register=()=>{
                     <input type="password" ref={password2} />
                 </div>
                 <div>
-                    <input type="submit" value="Register"/>
+                    <input type="submit" value="Registrieren"/>
                 </div>
+                <NavLink to="/login">Anmelden</NavLink>
             </form>
         </div>
     )
