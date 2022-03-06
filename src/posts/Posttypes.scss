@@ -1,0 +1,46 @@
+@import "../mixins.scss";
+
+.card-div {
+    position: relative;
+    width: 335px;
+    left: 0px;
+    top: 0px;
+    border-radius: 16px;
+    padding: 16px 16px 20px 20px;
+    box-shadow: -3px -3px 8px 0px rgba(168, 170, 201, 0.5);
+    box-shadow: -3px -3px 8px 0px rgba(168, 170, 201, 0.5);
+    box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.35);
+
+
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 299px;
+    height: 34px;
+    left: 20px;
+    top: 16px;
+    //styleName: D_ProfileName;
+@include PostUserName;
+    color: white;
+
+    .user-pic{
+        @include YellowBg;
+        width: 24px;
+        height: 24px;
+        border-radius: 24px;
+        margin-right: 16px;
+    }
+}
+    .post-text-content{
+            @include TextLeft;
+            @include WhiteTxt;
+            
+            .txt-title{
+                @include PostTitle;
+            }
+    }
+
+}
