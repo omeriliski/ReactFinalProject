@@ -4,22 +4,9 @@ import Navbar from '../components/Navbar';
 import TextPost from "../posts/Posttypes"
 import {Navigate} from "react-router-dom"
 const Home=()=>{
-    const {currentUser, setCurrentUser, getUser}=useContext(Context);
+    const {currentUser, setCurrentUser}=useContext(Context);
     
-    // useEffect(()=>{
-        //     getUser();
-        //   },[])
-        
-    // useEffect(()=>{
-    //     const auth = getAuth();
-    //     auth.onAuthStateChanged(user=>{
-    //         console.log('user :>> ',user);
-    //         setUser(user);
-    //       })
-    // },[])
-    if(!getUser()){
-        return <Navigate to="login"/>
-    }
+    if(!currentUser) return <Navigate to="login"/>
     return(
         <div>
             <Navbar/>
