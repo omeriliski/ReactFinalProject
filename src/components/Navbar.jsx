@@ -19,7 +19,7 @@ const Navbar = ()=>{
             <ul>
                 <li><NavLink className="nav-link" to="/">Home</NavLink></li>
                 <li><NavLink className="nav-link" to="/create">Create Post</NavLink></li>
-                {currentUser && <li><NavLink className="nav-link" to="/login" onClick={logout}>Logout</NavLink></li>}
+                <li><NavLink className="nav-link" to="/login" onClick={logout}>Logout</NavLink></li>
             </ul>
         </div>
     )
