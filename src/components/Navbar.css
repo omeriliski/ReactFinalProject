@@ -1,3 +1,4 @@
+
 ul{
     display: flex;
 }
@@ -5,6 +6,7 @@ li{
     list-style-type: none;
 }
 .nav-link{
+    color: white;
     text-decoration: none;
     margin-right: 2rem;
 }

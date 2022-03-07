@@ -11,16 +11,14 @@ export const Context = createContext();
 
 
 function App() {
-  const [currentUser,setCurrentUser] = useState(null);
+  const [currentUser,setCurrentUser] = useState({});
 
   const getUser=()=>{
-    const user = JSON.parse(localStorage.getItem("user"));
-    setCurrentUser(user);
-    console.log('app user :>> ', user);
+    return JSON.parse(localStorage.getItem("user"));
   }
   
   useEffect(()=>{
-    getUser();
+    setCurrentUser(getUser());
   },[])
 
   // useEffect(()=>{
@@ -35,15 +33,19 @@ function App() {
   //     setUser(user);
   //   })
   // },[])
+
+  
+
   return (
     <Context.Provider value={{currentUser,setCurrentUser,getUser}}>
     <div className="App">
       <Routes>
-        <Route index element={<Home/>  }/>
+        <Route path='/' element={ <Home/> }/>
         <Route path='/create' element={<CreatePost/> }/>
         <Route path='/login' element={<Login/> }/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/*' element={<Navigate to="/"/>}/>
+        <Route path='/*' element={getUser() ? <Navigate to="/"/>:<Navigate to="/login"/>}/>
+        {console.log("currentUser",currentUser)}
       </Routes>
     </div>
     </Context.Provider>
