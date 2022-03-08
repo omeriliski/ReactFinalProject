@@ -9,17 +9,19 @@ import { Context } from "../App";
 import Navbar from "../components/Navbar";
 import { Navigate } from "react-router-dom";
 const Home = () => {
-  const { currentUser, setCurrentUser, getUser } = useContext(Context);
+  const { postData } = useContext(Context);
 
-  // if(!getUser()){
-  //     return <Navigate to="login"/>
-  // }
+//   if(!currentUser) return <Navigate to="login"/>
+  
   return (
     <div>
-      <Navbar />
       <TextPost />
       <ShortTextPost />
-      <BildTextPost />
+      {postData.map(post=>{
+        console.log('post :>> ', post);
+        return <BildTextPost post={post} />
+      })
+      }
       <AwardPost />
     </div>
   );
