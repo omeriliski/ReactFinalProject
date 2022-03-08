@@ -1,12 +1,11 @@
-import { Navigate, NavLink,useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import {Context} from "../App";
 import { getAuth, signOut } from 'firebase/auth'
-import "./Navbar.css";
+import "./Navbar.scss";
 
 const Navbar = ()=>{
-    const {currentUser,setCurrentUser} = useContext(Context);
-    const navigate = useNavigate();
+    const {setCurrentUser} = useContext(Context);
 
     const logout=()=>{
         const auth = getAuth();

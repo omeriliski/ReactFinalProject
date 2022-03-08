@@ -19,10 +19,10 @@ function App() {
       <Routes>
         <Route path='/' element={ <Home/> }/>
         <Route path='/create' element={<CreatePost/> }/>
+        
         <Route path='/login' element={<Login/> }/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/*' element={currentUser ? <Navigate to="/"/>:<Navigate to="/login"/>}/>
-        {console.log("currentUser",currentUser)}
       </Routes>
     </div>
     </Context.Provider>
