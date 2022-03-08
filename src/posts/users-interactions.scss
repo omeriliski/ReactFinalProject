@@ -1,18 +1,81 @@
 @import "../mixins.scss";
 
 
-.interactions-container{
+.interactions-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
-    .button-feedback{
-@include BorderWhiteR16;
-@include CommentsButtons;
-background: none;
-padding-inline: 16px;
+.voting{
+    display: flex;
+    align-items: center;
+    
+}
+.typo-extras{
+    @include typo-extras;
+    @include WhiteTxt;
+    @include Padding8px
 
 
+}
+
+
+    .button-feedback {
+        @include BorderWhiteR16;
+        @include CommentsButtons;
+        background: none;
+        padding-inline: 16px;
+
+        &:hover {
+            cursor: pointer;
+            @include YellowTxt;
+            @include YellowBorder
+        }
+    }
+}
+
+.comments-container{
+    @include Margin8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+
+    .show-comments{
+        border: none;
+        background: none;
+        @include typo-extras;
+    @include YellowTxt;
+    display: flex;
+    align-items: center;
+    .arrow-down{
+        @include Padding8px;
+    }
+    }
+}
+
+.actual-comment-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+
+    .user-name{
+        @include typo-extras-semibold;
+        @include WhiteTxt;
+        @include Margin0;
+    }
+    .user-comment{
+        display: flex;
+        @include TextLeft;
+        @include typo-extras;
+        @include Margin0;
+        @include WhiteTxt
 
     }
+}
+
+.yellowtxt{
+    @include YellowTxt;
 }

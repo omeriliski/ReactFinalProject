@@ -4,6 +4,9 @@ import Home from "./pages/Home";
 import CreatePost from './pages/CreatePost';
 import './App.scss';
 import "./firebase";
+
+import { Header } from './Header';
+
 import {Routes,Route, Navigate} from "react-router-dom";
 import {useState,createContext } from 'react';
 
@@ -16,6 +19,7 @@ function App() {
   return (
     <Context.Provider value={{currentUser,setCurrentUser}}>
     <div className="App">
+      <Header></Header>
       <Routes>
         <Route path='/' element={ <Home/> }/>
         <Route path='/create' element={<CreatePost/> }/>
