@@ -1,7 +1,7 @@
 import {useRef, useContext} from "react";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import {NavLink, useNavigate} from "react-router-dom";
-import {Context} from "../App";
+import {PostContext} from "../App";
 
 
 const Login=()=>{
@@ -10,7 +10,7 @@ const Login=()=>{
     const auth = getAuth();
     const navigate = useNavigate();
 
-    const {setCurrentUser} = useContext(Context);
+    const {setCurrentUser} = useContext(PostContext);
 
     const eventHandler=(e)=>{
         e.preventDefault();

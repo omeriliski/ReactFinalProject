@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "../App";
+import { PostContext } from "../App";
 import { getAuth, signOut } from "firebase/auth";
 import "./Navbar.scss";
 import "../App.scss";
@@ -8,7 +8,7 @@ import Plus from "../posts/img/plus.svg";
 import Logo from "../posts/img/logo.svg";
 
 const Navbar = () => {
-  const { currentUser, setCurrentUser } = useContext(Context);
+  const { currentUser, setCurrentUser } = useContext(PostContext);
 
   const location = useLocation();
 
