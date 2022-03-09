@@ -48,6 +48,10 @@ padding-inline: 8px;
     margin-bottom: 0px;
     
 }
+@mixin MarginTopPage64 {
+    margin-top: 64px;
+    
+}
 
 //TYPO:
 @mixin typo-extras {

@@ -24,6 +24,7 @@
             border-radius: 40px;
     }
     .button-secondary{
+        cursor: pointer;
                 width: 100%;
                 @include WhiteTxt;
                 @include PostBodyText;
