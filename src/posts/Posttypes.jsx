@@ -1,7 +1,6 @@
 import "./Posttypes.scss";
 import More from "./img/more.svg"
-import { ActualComments, UsersInteractions } from "./UsersInteractions";
-import { UserComments } from "./UsersInteractions";
+import { ActualComments, UsersInteractions,UserComments,NewComment } from "./UsersInteractions";
 import { ButtonPrimary, ButtonSecondary } from "./Buttons";
 import Image from "./img/postbild.jpg"
 
@@ -83,7 +82,8 @@ export function UmfragePost() {
   );}
 
 
-export function BildTextPost() {
+export function BildTextPost({post}) {
+  console.log('post  BildTextPost:>> ', post);
   return (
     <div className="card-div">
       <div className="card-header">
@@ -96,20 +96,21 @@ export function BildTextPost() {
       </div>
       <div className="post-text-content">
         <div className="picture-wrapper">
-<img className="image-src" src={Image} />
+        <img className="image-src" src={post.imgUrl} />
         </div>
         <div className="txt-title">
-          <p>Lorem ipsum dolor sit amet.</p>
+          <p>{post.postTitle}</p>
         </div>
         <div className="body-txt">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe sapiente quidem accusantium maxime unde autem, quasi, illo cumque blanditiis, molestias eaque laboriosam iure ea aliquam ipsum minima! Itaque debitis maiores commodi, magnam recusandae, modi iste deleniti maxime, molestiae expedita omnis?
+            {post.postText}
           </p>
         </div>
       </div>
       <UsersInteractions/>
       < UserComments/>
       <ActualComments/>
+      <NewComment post={post}/>
     </div>
   )}
 
