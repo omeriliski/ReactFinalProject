@@ -33,23 +33,27 @@ const Register = () => {
       <h1>Register</h1>
       <form onSubmit={eventHandler}>
         <div>
-          <input type="text" ref={username} placeholder="Username"/>
+          <input type="text" ref={username} placeholder="Username" />
         </div>
         <div>
-          <input type="email" ref={email} placeholder="E-Mail"/>
+          <input type="email" ref={email} placeholder="E-Mail" />
         </div>
         <div>
-          <input type="password" ref={password1} placeholder="Password"/>
+          <input type="password" ref={password1} placeholder="Password" />
         </div>
         <div>
-          <input type="password" ref={password2} placeholder="Repeat the password"/>
+          <input
+            type="password"
+            ref={password2}
+            placeholder="Repeat the password"
+          />
         </div>
-        <div>
-          <ButtonPrimary />
-        </div>
+        <div className="buttons">
+        <ButtonPrimary text="Register" onClick/>
         <NavLink to="/login">
-          <ButtonSecondary />
+          <ButtonSecondary text="Anmelden" />
         </NavLink>
+        </div>
       </form>
     </div>
   );

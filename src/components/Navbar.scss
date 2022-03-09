@@ -5,16 +5,17 @@
     width: 100%;
     // position: absolute;
     //Instead of absolute i did sticky, is it better?(Ömer)
-    position: sticky;
+    position: fixed;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
 
     // z-index: 1;
-    // left: 0%;
+    left: 0%;
     // right: 0%;
     // top: 0%;
+    top:0px;
     bottom: 22.53%;
     height: 56px;
     width: 100%;
