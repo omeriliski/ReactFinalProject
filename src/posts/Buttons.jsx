@@ -1,22 +1,18 @@
 import "./buttons.scss";
 
 
-export function ButtonPrimary() {
+export function ButtonPrimary({text}) {
   return (
     <div className="button-wrapper">
-      <button className="button-primary">
-        <p className="txt">Zum Profile</p>
-      </button>
+      <input type="submit" className="button-primary" value={text}/>
     </div>
   );
 }
 
-export function ButtonSecondary() {
+export function ButtonSecondary({text}) {
   return (
     <div className="button-wrapper">
-      <button className="button-secondary">
-        <p className="txt">Schliessen</p>
-      </button>
+      <input type="button" className="button-secondary" value={text} />
     </div>
   );
 }

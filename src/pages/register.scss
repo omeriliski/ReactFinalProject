@@ -22,6 +22,12 @@ body {
         display: flex;
         flex-direction: column;
 
+        .buttons{
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+
+        }
         div {
 display: flex;
 
@@ -29,7 +35,8 @@ display: flex;
             input {
 
             @include Margin8;  
-text-decoration: none;               
+text-decoration: none;   
+@include PostBodyText;            
  display: flex;
                 flex-direction: column;
                 align-items: center;
