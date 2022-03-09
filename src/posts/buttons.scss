@@ -11,19 +11,33 @@
 
 
     .button-primary {
-@include Buttons;
+        @include Buttons;
         @include YellowBg;
         @include PostBodyText;
         @include BlackTxt;
 
     }
-    .button-secondary{
-@include Buttons;
+
+    .button-secondary {
+        @include Buttons;
         @include PostBodyText;
         @include WhiteTxt;
         height: 40px;
         border-radius: 40px;
-@include BorderWhite;
+        @include BorderWhite;
         box-shadow: none;
+    }
+}
+
+.button-small {
+    @include BorderWhiteR16;
+    @include CommentsButtons;
+    background: none;
+    padding-inline: 16px;
+
+    &:hover {
+        cursor: pointer;
+        @include YellowTxt;
+        @include YellowBorder
     }
 }

@@ -78,6 +78,15 @@ padding-inline: 8px;
 }
 
 //TYPO:
+@mixin Headline {
+    font-family: 'Manrope';
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 39px;
+    /* or 130% */
+    letter-spacing: -0.01em; 
+}
+
 @mixin typo-extras {
     font-family: 'Manrope';
     font-size: 12px;

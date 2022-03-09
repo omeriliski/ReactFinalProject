@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import {Context} from "../App";
 import {Navigate} from "react-router-dom"
 import "./CreatePost.scss";
+import { ButtonPrimary } from '../posts/Buttons';
 
 const CreatePost = ()=>{
     const {currentUser} = useContext(Context);
@@ -29,8 +30,8 @@ const CreatePost = ()=>{
                     <img src={imageURL}/>
                     <input ref={titel} type="text" placeholder='Titel hinzufügen'/>
                     <textarea ref={text} rows="4" cols="40" placeholder='Text hinzufügen'></textarea>
-                    <button>Vorschau</button>
-                    <input type="submit" value="Teilen"/>
+
+                    <ButtonPrimary text="Teilen"/>
                 </form>
             </div>
         </div>

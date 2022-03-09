@@ -2,6 +2,7 @@ import VotingUp from "./img/votingUp.svg";
 import VotingDown from "./img/votingDown.svg";
 import ArrowDown from "./img/arrowDown.svg";
 import "./users-interactions.scss";
+import { SmallButton } from "./Buttons";
 const votingNumber = 4;
 const commentsNumber = 9;
 const userName = "Johanna";
@@ -17,9 +18,7 @@ export function UsersInteractions() {
         <a className="typo-extras">{votingNumber}</a>
         <img className="voting-up" src={VotingDown} />{" "}
       </div>
-      <div className="feedback">
-        <button className="button-feedback">Feedback</button>
-      </div>
+ <SmallButton text="Feedback"/>
     </div>
   );
 }

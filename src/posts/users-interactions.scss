@@ -21,18 +21,7 @@
 }
 
 
-    .button-feedback {
-        @include BorderWhiteR16;
-        @include CommentsButtons;
-        background: none;
-        padding-inline: 16px;
 
-        &:hover {
-            cursor: pointer;
-            @include YellowTxt;
-            @include YellowBorder
-        }
-    }
 }
 
 .comments-container{
