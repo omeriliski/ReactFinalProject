@@ -82,8 +82,7 @@ export function UmfragePost() {
   );}
 
 
-export function BildTextPost({post}) {
-  console.log('post  BildTextPost:>> ', post);
+export function BildTextPost({post,index}) {
   return (
     <div className="card-div">
       <div className="card-header">
@@ -110,7 +109,7 @@ export function BildTextPost({post}) {
       <UsersInteractions/>
       < UserComments/>
       <ActualComments/>
-      <NewComment post={post}/>
+      <NewComment post={post} index={index}/>
     </div>
   )}
 
