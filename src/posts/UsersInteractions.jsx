@@ -47,31 +47,44 @@ export function ActualComments() {
   );
 }
 
-export function NewComment({ post }) {
-  const { currentUser, postData,setPostData,savePostData } = useContext(PostContext);
+export function NewComment({ post, index }) {
+  const { currentUser, getPostData, savePostData } = useContext(PostContext);
   const commentText = useRef();
+  
   const eventHandler = (e) => {
     e.preventDefault();
-    
     const comment = {
       //we should fix email
       userName: currentUser.email,
       userComment: commentText.current.value,
       datum: new Date().toDateString(),
     };
-    postData.find(e=>e==post).comments.push(comment);
-    setPostData(postData);
+    // postData.find(item=>item==post).comments.push(comment);
 
-    const newPostData = {
-      userSettings:{
-            userId:currentUser.uid,
-            userEmail:currentUser.email
-        },
-      postList:postData
-    };
+    // setPostData(postData);
+
+    // const newPostData = {
+    //   userSettings:{
+    //         userId:currentUser.uid,
+    //         userEmail:currentUser.email
+    //     },
+    //   postList:postData
+    // };
     
-    savePostData(newPostData);
 
+    // savePostData(newPostData);
+    // const data = database.find(data=>data.postUserId===post.uid);
+    // console.log('data :>> ', data);
+    // const postFound = data.postList.find(item=>item==post)
+    // console.log('post :>> ', post);
+    // console.log('postFound :>> ', postFound);
+
+    getPostData(post.postUserId)
+    .then(res=>{
+      res.postList[index].comments.push(comment)
+      console.log('res :>> ', res);
+      savePostData(res,post.postUserId);
+    })
   };
   return (
     <div className="actual-comment-container">

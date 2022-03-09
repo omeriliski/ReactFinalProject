@@ -11,7 +11,7 @@ const CreatePost = ()=>{
     const [imageURL,setImageURL] = useState();
     const [progress, setProgress] = useState(0);
     
-    const {currentUser, postData,savePostData,database,getAllData} = useContext(PostContext);
+    const {currentUser, postData,setPostData, savePostData,database,getAllData} = useContext(PostContext);
     
     const img = useRef();
     const postTitle = useRef();
@@ -30,18 +30,20 @@ const CreatePost = ()=>{
             imgUrl,
             comments:[],
             like:0,
-            dislike:0
+            dislike:0,
+            postUserId:currentUser.uid,
+            postUserEmail:currentUser.email
         }
+
         const newPostData={
-            userSettings:{
-                userId:currentUser.uid,
-                userEmail:currentUser.email
-            },
             postList:[
                 ...postData,newPost
             ]
         }
-        savePostData(newPostData);
+        // const tempPostData=[...postData];
+        // tempPostData.push(newPost);
+        
+        savePostData(newPostData,currentUser.uid);
         getAllData();
     }
 
