@@ -20,15 +20,10 @@ const Login = () => {
       password.current.value
     )
       .then((res) => {
-        console.log("logged in :>> ", res.user);
         localStorage.setItem("user", JSON.stringify(res.user));
         setCurrentUser(res.user);
 
-        getPostData(res.user.uid).then((res) => {
-          console.log("res :>> ", res);
-          res.length>0 ? setPostData(res.postList) :setPostData([]);
-        });
-
+        getPostData();
         navigate("/");
       })
       .catch((e) => {

@@ -26,31 +26,38 @@ export function UsersInteractions() {
   );
 }
 
-export function UserComments() {
+export function UserComments({ post,setShowComments,showComments }) {
+  const showAllComments=()=>{
+    setShowComments(!showComments)
+  }
   return (
     <div className="comments-container">
-      <button className="show-comments">
-        Alle {commentsNumber} Kommentare anzeigen{" "}
-        <img className="arrow-down" src={ArrowDown} />
+      <button className="show-comments" onClick={showAllComments}>
+        Alle {post?.comments?.length} Kommentare anzeigen{" "}
+        <img className="arrow-down" src={ArrowDown}/>
       </button>
     </div>
   );
 }
 
-export function ActualComments() {
-  return (
-    <div className="actual-comment-container">
-      <p className="user-name">{userName}</p>
-      <p className="user-comment">{userComment}</p>
-      <p className="user-comment yellowtxt">2 days ago</p>
-    </div>
-  );
+export function ActualComments({ comment }) {
+  //question: if there is no comment what happens?
+  if(comment==undefined) return <div>no comment</div>;
+  else {
+    return (
+      <div className="actual-comment-container">
+        <p className="user-name">{comment.userName}</p>
+        <p className="user-comment">{comment.userComment}</p>
+        <p className="user-comment yellowtxt">{comment.datum}</p>
+      </div>
+    );
+  }
 }
 
 export function NewComment({ post, index }) {
-  const { currentUser, getPostData, savePostData } = useContext(PostContext);
+  const { currentUser, database, savePostData } = useContext(PostContext);
   const commentText = useRef();
-  
+
   const eventHandler = (e) => {
     e.preventDefault();
     const comment = {
@@ -70,7 +77,6 @@ export function NewComment({ post, index }) {
     //     },
     //   postList:postData
     // };
-    
 
     // savePostData(newPostData);
     // const data = database.find(data=>data.postUserId===post.uid);
@@ -79,12 +85,9 @@ export function NewComment({ post, index }) {
     // console.log('post :>> ', post);
     // console.log('postFound :>> ', postFound);
 
-    getPostData(post.postUserId)
-    .then(res=>{
-      res.postList[index].comments.push(comment)
-      console.log('res :>> ', res);
-      savePostData(res,post.postUserId);
-    })
+    const tempDatabase = [...database];
+    tempDatabase[index].comments.push(comment);
+    savePostData(tempDatabase);
   };
   return (
     <div className="actual-comment-container">
