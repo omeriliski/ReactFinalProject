@@ -3,6 +3,7 @@ import More from "./img/more.svg"
 import { ActualComments, UsersInteractions,UserComments,NewComment } from "./UsersInteractions";
 import { ButtonPrimary, ButtonSecondary } from "./Buttons";
 import Image from "./img/postbild.jpg"
+import { useState } from "react";
 
 
 export function TextPost() {
@@ -83,6 +84,7 @@ export function UmfragePost() {
 
 
 export function BildTextPost({post,index}) {
+  const [showComments,setShowComments] = useState(false);
   return (
     <div className="card-div">
       <div className="card-header">
@@ -107,9 +109,11 @@ export function BildTextPost({post,index}) {
         </div>
       </div>
       <UsersInteractions/>
-      < UserComments/>
-      <ActualComments/>
-      <NewComment post={post} index={index}/>
+      < UserComments post={post} setShowComments={setShowComments} showComments={showComments}/>
+      {showComments ? post.comments.map((comment)=><ActualComments comment={comment}/>) :
+        <ActualComments comment={ post.comments[post.comments.length-1]}/>
+      }
+      {showComments && <NewComment post={post} index={index}/>}
     </div>
   )}
 

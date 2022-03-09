@@ -11,7 +11,7 @@ const CreatePost = ()=>{
     const [imageURL,setImageURL] = useState();
     const [progress, setProgress] = useState(0);
     
-    const {currentUser, postData,setPostData, savePostData,database,getAllData} = useContext(PostContext);
+    const {currentUser,getPostData, savePostData,database,getAllData} = useContext(PostContext);
     
     const img = useRef();
     const postTitle = useRef();
@@ -35,16 +35,14 @@ const CreatePost = ()=>{
             postUserEmail:currentUser.email
         }
 
-        const newPostData={
-            postList:[
-                ...postData,newPost
-            ]
-        }
+        const newPostData=[newPost, ...database ] 
+        
         // const tempPostData=[...postData];
         // tempPostData.push(newPost);
-        
-        savePostData(newPostData,currentUser.uid);
-        getAllData();
+        console.log('database :>> ', database);
+        console.log('newPostData :>> ', newPostData);
+        savePostData(newPostData);
+        getPostData();
     }
 
     const uploadFile=((file)=>{
