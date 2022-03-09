@@ -1,11 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap');
 
+
+// BUTTONS
+@mixin Buttons {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            height: 40px;
+            border-radius: 40px;
+            box-shadow: none;
+            width: 100%;
+   
+}
 //COLORS:
 @mixin YellowTxt {
     color: #FFFF00;
 }
 @mixin WhiteTxt {
     color: white;
+}
+
+@mixin BlackTxt {
+    color: black;
+    
 }
 
 @mixin YellowBg {
@@ -22,6 +42,10 @@
 @mixin BorderWhiteR16{
     border: white solid 1px;
     border-radius: 16px;
+}
+
+@mixin BorderWhite {
+        border: 1px white solid;
 }
 
 //PADDINGS INLINE
@@ -46,6 +70,10 @@ padding-inline: 8px;
 @mixin Margin0 {
     margin-top: 0px;
     margin-bottom: 0px;
+    
+}
+@mixin MarginTopPage64 {
+    margin-top: 64px;
     
 }
 

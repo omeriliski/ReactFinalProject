@@ -15,8 +15,6 @@ import {
   doc,
   setDoc,
 } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-
 
 export const PostContext = createContext();
 
