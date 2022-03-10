@@ -1,4 +1,6 @@
-import './post-options.scss'
+import "./create-post-options.scss";
+import { Navigate } from "react-router-dom";
+
 
 export default function ChooseAPostType(){
     return(

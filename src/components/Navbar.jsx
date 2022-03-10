@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "../App";
+import { PostContext } from "../App";
 import { getAuth, signOut } from "firebase/auth";
 import "./Navbar.scss";
 import "../App.scss";
@@ -9,7 +9,7 @@ import Logo from "../posts/img/logo.svg";
 import { SmallButton } from "../posts/Buttons";
 
 const Navbar = () => {
-  const { currentUser, setCurrentUser } = useContext(Context);
+  const { currentUser, setCurrentUser } = useContext(PostContext);
 
   const location = useLocation();
 
@@ -27,7 +27,7 @@ const Navbar = () => {
       </NavLink>
 
       {currentUser ? (
-        <NavLink to="/create" className="plus-for-post">
+        <NavLink to="/create1" className="plus-for-post">
           <img src={Plus} />{" "}
         </NavLink>
       ) : null}

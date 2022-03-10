@@ -7,6 +7,7 @@
     justify-content: center;
     width: 335px;
     @include Margin8;
+    margin-top: 16px;
 
 
 
@@ -26,9 +27,13 @@
         border-radius: 40px;
         @include BorderWhite;
         box-shadow: none;
+        @include DarkBg;
     }
 }
+.feedback{
+    display: flex;
 
+}
 .button-small {
     @include BorderWhiteR16;
     @include CommentsButtons;
