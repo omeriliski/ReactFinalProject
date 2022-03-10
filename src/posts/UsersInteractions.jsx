@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PostContext } from "../App";
 import VotingUp from "./img/votingUp.svg";
 import VotingDown from "./img/votingDown.svg";
@@ -16,7 +16,8 @@ const userName = "Johanna";
 const userComment =
   "Eos tempora ipsum iusto eius maxime perspiciatis voluptas magnam quidem accusamus repudiandae!.";
 
-export function UsersInteractions() {
+export function UsersInteractions({post, feedback, setFeedback}) {
+
   return (
     <div className="interactions-container">
       <div className="voting">
@@ -25,7 +26,7 @@ export function UsersInteractions() {
         <img className="voting-up" src={VotingDown} />{" "}
       </div>
       <div className="feedback">
- <SmallButton text="Feedback"/>
+ <SmallButton text="Feedback" feedback={feedback} post={post} setFeedback={setFeedback}/>
         </div>
     </div>
   );
@@ -87,14 +88,33 @@ export function NewComment({ post, index }) {
 }
 
 
-export function ShareAFeedback(text){
+export function ShareAFeedback({index, post, text, feedback, setFeedback}){
+  
 
   return (
     <div className="interactions-overlay">
       <p className="txt-title">Feedback</p>
-      <ButtonSecondary text="Super Informativ!" />
-      <ButtonSecondary text="Wie Krass!" />
-      <ButtonSecondary text="Du erhellst meinen Tag." />
+      <ButtonSecondary
+        text="Super Informativ!"
+        feedback={feedback}
+        setFeedback={setFeedback}
+        index={index}
+        post={post}
+      />
+      <ButtonSecondary
+        text="Wie Krass!"
+        feedback={feedback}
+        setFeedback={setFeedback}
+        index={index}
+        post={post}
+      />
+      <ButtonSecondary
+        text="Du erhellst meinen Tag."
+        feedback={feedback}
+        setFeedback={setFeedback}
+        index={index}
+        post={post}
+      />
     </div>
   );
 }
