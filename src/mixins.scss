@@ -9,6 +9,9 @@
             align-items: center;
             justify-content: center;
             border: none;
+            text-decoration: none;
+
+            
             height: 40px;
             border-radius: 40px;
             box-shadow: none;
@@ -48,6 +51,10 @@
         border: 1px white solid;
 }
 
+@mixin BorderDark {
+        border: 1px #2E2E2E solid;
+}
+
 //PADDINGS INLINE
 @mixin Padding16px {
 padding-inline: 16px;    
@@ -78,6 +85,15 @@ padding-inline: 8px;
 }
 
 //TYPO:
+@mixin Headline {
+    font-family: 'Manrope';
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 39px;
+    /* or 130% */
+    letter-spacing: -0.01em; 
+}
+
 @mixin typo-extras {
     font-family: 'Manrope';
     font-size: 12px;

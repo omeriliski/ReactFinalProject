@@ -1,99 +1,128 @@
-import {useContext,useRef, useState } from 'react';
-import {PostContext} from "../App";
-import {Navigate} from "react-router-dom"
-import {collection, getFirestore, getDoc,getDocs,doc,setDoc} from "firebase/firestore";
-import {getAuth} from 'firebase/auth'
-import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
-import {storage } from "../firebase";
+import { useContext, useRef, useState } from "react";
+import { PostContext } from "../App";
+import { Navigate } from "react-router-dom";
+import {
+  collection,
+  getFirestore,
+  getDoc,
+  getDocs,
+  doc,
+  setDoc,
+} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { storage } from "../firebase";
 import "./CreatePost.scss";
+import { ButtonPrimary } from "../posts/Buttons";
 
-const CreatePost = ()=>{
-    const [imageURL,setImageURL] = useState();
-    const [progress, setProgress] = useState(0);
-    
-    const {currentUser,getPostData, savePostData,database,getAllData} = useContext(PostContext);
-    
-    const img = useRef();
-    const postTitle = useRef();
-    const postText = useRef();
+const CreatePost = () => {
+  const [imageURL, setImageURL] = useState();
+  const [progress, setProgress] = useState(0);
 
-    const db = getFirestore();
-    
-    const createPostData = async (imgUrl)=> {
+  const { currentUser, postData, savePostData, database, getAllData } =
+    useContext(PostContext);
 
-        // const currentUsersPosts = database.find(data=>data.userSettings.uid==currentUser.uid);
-        // console.log('currentUsersPosts :>> ', currentUsersPosts);
+  const img = useRef();
+  const postTitle = useRef();
+  const postText = useRef();
 
-        const newPost={
-            postTitle:postTitle.current.value,
-            postText:postText.current.value,
-            imgUrl,
-            comments:[],
-            like:0,
-            dislike:0,
-            postUserId:currentUser.uid,
-            postUserEmail:currentUser.email
-        }
+  const db = getFirestore();
 
-        const newPostData=[newPost, ...database ] 
-        
-        // const tempPostData=[...postData];
-        // tempPostData.push(newPost);
-        console.log('database :>> ', database);
-        console.log('newPostData :>> ', newPostData);
-        savePostData(newPostData);
-        getPostData();
-    }
+  const createPostData = async (imgUrl) => {
+    // const currentUsersPosts = database.find(data=>data.userSettings.uid==currentUser.uid);
+    // console.log('currentUsersPosts :>> ', currentUsersPosts);
 
-    const uploadFile=((file)=>{
-        if(!file) return;
-        const storageRef = ref(storage,`files/${file.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, file);
+    const newPost = {
+      postTitle: postTitle.current.value,
+      postText: postText.current.value,
+      imgUrl,
+      comments: [],
+      like: 0,
+      dislike: 0,
+    };
+    const newPostData = {
+      userSettings: {
+        userId: currentUser.uid,
+        userEmail: currentUser.email,
+      },
+      postList: [...postData, newPost],
+    };
+    savePostData(newPostData);
+    getAllData();
+  };
 
-        uploadTask.on("state_changed",(snapshot)=>{
-                const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)*100)
-                setProgress(prog);
-            },
-            (err)=>console.log('err :>> ', err),
-            ()=>{
-                getDownloadURL(uploadTask.snapshot.ref)
-                .then(imgUrl=> createPostData(imgUrl))
-            }   
-        )
+  const uploadFile = (file) => {
+    if (!file) return;
+    const storageRef = ref(storage, `files/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const prog = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(prog);
+      },
+      (err) => console.log("err :>> ", err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((imgUrl) =>
+          createPostData(imgUrl)
+        );
+      }
+    );
 
-        // const storage = getStorage();
-        //const storageRef = ref(storage, URL.createObjectURL(img.current.files[0]));
-    
-        // 'file' comes from the Blob or File API
-        // uploadBytes(storageRef, file).then((snapshot) => {
-        //   console.log('Uploaded a blob or file!');
-        // });
-    })
+    // const storage = getStorage();
+    //const storageRef = ref(storage, URL.createObjectURL(img.current.files[0]));
 
-    const handleSubmit=(e)=>{
-        e.preventDefault();
-        setImageURL(URL.createObjectURL(img.current.files[0]))
-        console.log('URL.createObjectURL(img.current.files[0]) :>> ', URL.createObjectURL(img.current.files[0]));
-        const url = uploadFile(img.current.files[0]);
-        console.log('imageURL :>> ', imageURL);
-    }
+    // 'file' comes from the Blob or File API
+    // uploadBytes(storageRef, file).then((snapshot) => {
+    //   console.log('Uploaded a blob or file!');
+    // });
+  };
 
-    if(!currentUser) return <Navigate to="login"/>
-    return(
-        <div>
-            <div className='form-container'>
-                <form onSubmit={handleSubmit}> 
-                    <input ref={img} type="file" accept='image/*' placeholder='Bild hinzufügen'/>
-                    <img src={imageURL}/>
-                    <h3>Uploaded {progress} %</h3>
-                    <input ref={postTitle} type="text" placeholder='Titel hinzufügen'/>
-                    <textarea ref={postText} rows="4" cols="40" placeholder='Text hinzufügen'></textarea>
-                    <button>Vorschau</button>
-                    <input type="submit" value="Teilen"/>
-                </form>
-            </div>
-        </div>
-    )
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setImageURL(URL.createObjectURL(img.current.files[0]));
+    console.log(
+      "URL.createObjectURL(img.current.files[0]) :>> ",
+      URL.createObjectURL(img.current.files[0])
+    );
+    const url = uploadFile(img.current.files[0]);
+    console.log("imageURL :>> ", imageURL);
+  };
+
+  if (!currentUser) return <Navigate to="login" />;
+  return (
+    <div>
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <input
+            ref={img}
+            type="file"
+            accept="image/*"
+            placeholder="Bild hinzufügen"
+          />
+          <img src={imageURL} />
+
+          <h3>Uploaded {progress} %</h3>
+          <input ref={postTitle} type="text" placeholder="Titel hinzufügen" />
+          <textarea
+            ref={postText}
+            rows="4"
+            cols="40"
+            placeholder="Text hinzufügen"
+          ></textarea>
+          <ButtonPrimary text="Teilen" />
+        </form>
+      </div>
+    </div>
+  );
+};
 export default CreatePost;

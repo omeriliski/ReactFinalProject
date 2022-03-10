@@ -1,6 +1,6 @@
 import "./Posttypes.scss";
 import More from "./img/more.svg"
-import { ActualComments, UsersInteractions,UserComments,NewComment } from "./UsersInteractions";
+import { ActualComments, UsersInteractions,UserComments,NewComment, ShareAFeedback } from "./UsersInteractions";
 import { ButtonPrimary, ButtonSecondary } from "./Buttons";
 import Image from "./img/postbild.jpg"
 import { useState } from "react";
@@ -27,6 +27,7 @@ export function TextPost() {
           </p>
         </div>
       </div>
+      <ShareAFeedback/>
       <UsersInteractions/>
       < UserComments/>
       <ActualComments/>
@@ -119,20 +120,17 @@ export function BildTextPost({post,index}) {
 
 export function AwardPost() {
   return (
+    <div className="card-div">
+      <div className="card-headline">
+        Exzellent! Du hast 5.000 Punkte erhalten.
+      </div>
+      <div className="card-text">
+        Diskutiere weiter und sammle Badges, mit denen Du bis zur Kurator*in
+        werden kannst. Verschenke mit Deinen Punkten Awards, um andere
+        User*innen auszuzeichnen!
+      </div>
 
-      <div className="card-div">
-        <div className="card-headline">
-          Exzellent! Du hast 5.000 Punkte erhalten.
-        </div>
-        <div className="card-text">
-          Diskutiere weiter und sammle Badges, mit denen Du bis zur Kurator*in
-          werden kannst. Verschenke mit Deinen Punkten Awards, um andere
-          User*innen auszuzeichnen!
-        </div>
-
-
-      <ButtonPrimary props={"Schlissen"} />
-      <ButtonSecondary />
+      <ButtonPrimary text="Schlissen" />
     </div>
   );}
 
