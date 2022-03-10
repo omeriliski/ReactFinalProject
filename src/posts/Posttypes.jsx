@@ -7,14 +7,15 @@ import { useState } from "react";
 
 
 export function TextPost() {
+  const [feedback, setFeedback] = useState(false)
   return (
     <div className="card-div">
       <div className="card-header">
         {" "}
         <div className="user-header">
-        <div className="user-pic"></div>{" "}
-        <p className="user-name">Laura Konig</p>
-          </div>
+          <div className="user-pic"></div>{" "}
+          <p className="user-name">Lauras Konig</p>
+        </div>
         <img className="more" src={More} />
       </div>
       <div className="post-text-content">
@@ -23,16 +24,23 @@ export function TextPost() {
         </div>
         <div className="body-txt">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum labore natus quam deleniti quae repellat officiis eius mollitia totam, asperiores saepe! Magnam saepe quaerat sit ut ab, delectus quae error ratione ea minus perferendis deleniti incidunt nam voluptates et aliquam iure necessitatibus illo. Ipsam optio inventore totam doloribus unde.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+            laborum labore natus quam deleniti quae repellat officiis eius
+            mollitia totam, asperiores saepe! Magnam saepe quaerat sit ut ab,
+            delectus quae error ratione ea minus perferendis deleniti incidunt
+            nam voluptates et aliquam iure necessitatibus illo. Ipsam optio
+            inventore totam doloribus unde.
           </p>
         </div>
       </div>
-      <ShareAFeedback/>
-      <UsersInteractions/>
-      < UserComments/>
-      <ActualComments/>
+      {feedback && (
+        <ShareAFeedback setFeedback={setFeedback} feedback={feedback} />
+      )}
+      <UsersInteractions setFeedback={setFeedback} feedback={feedback} />
+      <UserComments />
+      <ActualComments />
     </div>
-  )}
+  );}
 export function ShortTextPost() {
   return (
     <div className="card-div">
