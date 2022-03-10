@@ -1,5 +1,6 @@
 import "./buttons.scss";
-
+import { useContext } from "react";
+import { PostContext } from "../App";
 
 export function ButtonPrimary({text}) {
   return (
@@ -9,8 +10,16 @@ export function ButtonPrimary({text}) {
   );
 }
 
-export function ButtonSecondary({text, feedback, setFeedback}) {
+export function ButtonSecondary({index, post, text, feedback, setFeedback}) {
+    const { savePostData,database, setDatabase } = useContext(PostContext);
+
   function closeButton(){
+    console.log(post);
+    post.feedback = text; 
+    const arr = [...database]
+    arr[index] = post;
+    savePostData(arr)
+    setDatabase(arr)
     setTimeout(()=>setFeedback(false),1000)
   }
   return (
@@ -20,13 +29,16 @@ export function ButtonSecondary({text, feedback, setFeedback}) {
   );
 }
 
-export function SmallButton({text, setFeedback}){
+export function SmallButton({post, text, setFeedback}){
   function feedbackClick(){
   setFeedback(true)
 }
+console.log(post?.feedback);
   return (
     <div className="button-container">
-      <button className="button-small" onClick={feedbackClick}>{text}</button>
+      <button className="button-small" onClick={feedbackClick}>
+        {post?.feedback}
+      </button>
     </div>
   );
 }

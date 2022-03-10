@@ -75,21 +75,22 @@ function App() {
         setCurrentUser,
         savePostData,
         database,
+        setDatabase,
         getPostData,
       }}
     >
-      <div className="App">
+<div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="create" element={<ChooseAPostType />}>
-            <Route path="text" element={<CreatePost />} />
+          <Route index element={<Home />} />
+          <Route path="create" >
+            <Route index element={<ChooseAPostType />}/>
+            <Route path="text" element={<CreatePost/>}/>
           </Route>
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route
-            path="/*"
+            path="*"
             element={
               currentUser ? <Navigate to="/" /> : <Navigate to="/login" />
             }

@@ -42,6 +42,8 @@ export function TextPost() {
     </div>
   );}
 export function ShortTextPost() {
+    const [feedback, setFeedback] = useState(false);
+
   return (
     <div className="card-div">
       <div className="card-header">
@@ -60,13 +62,18 @@ export function ShortTextPost() {
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
       </div>
-      <UsersInteractions />
+      {feedback && (
+        <ShareAFeedback setFeedback={setFeedback} feedback={feedback} />
+      )}
+      <UsersInteractions setFeedback={setFeedback} feedback={feedback} />
       <UserComments />
       <ActualComments />
     </div>
   );}
 
 export function UmfragePost() {
+    const [feedback, setFeedback] = useState(false);
+
   return (
     <div className="card-div">
       <div className="card-header">
@@ -85,7 +92,10 @@ export function UmfragePost() {
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
       </div>
-      <UsersInteractions />
+      {feedback && (
+        <ShareAFeedback setFeedback={setFeedback} feedback={feedback} />
+      )}
+      <UsersInteractions setFeedback={setFeedback} feedback={feedback} />
       <UserComments />
       <ActualComments />
     </div>
@@ -93,40 +103,51 @@ export function UmfragePost() {
 
 
 export function BildTextPost({post,index}) {
+    const [feedback, setFeedback] = useState(false);
+
   const [showComments,setShowComments] = useState(false);
   return (
     <div className="card-div">
       <div className="card-header">
         {" "}
         <div className="user-header">
-        <div className="user-pic"></div>{" "}
-        <p className="user-name">Laura Konig</p>
-          </div>
+          <div className="user-pic"></div>{" "}
+          <p className="user-name">Laura Konig</p>
+        </div>
         <img className="more" src={More} />
       </div>
       <div className="post-text-content">
         <div className="picture-wrapper">
-        <img className="image-src" src={post.imgUrl} />
+          <img className="image-src" src={post.imgUrl} />
         </div>
         <div className="txt-title">
           <p>{post.postTitle}</p>
         </div>
         <div className="body-txt">
-          <p>
-            {post.postText}
-          </p>
+          <p>{post.postText}</p>
         </div>
       </div>
-      <UsersInteractions/>
-      < UserComments post={post} setShowComments={setShowComments} showComments={showComments}/>
-      {showComments ? post.comments.map((comment)=><ActualComments comment={comment}/>) :
-        <ActualComments comment={ post.comments[post.comments.length-1]}/>
-      }
-      {showComments && <NewComment post={post} index={index}/>}
+      {feedback && (
+        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
+      )}
+      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} />
+      <UserComments
+        post={post}
+        setShowComments={setShowComments}
+        showComments={showComments}
+      />
+      {showComments ? (
+        post.comments.map((comment) => <ActualComments comment={comment} />)
+      ) : (
+        <ActualComments comment={post.comments[post.comments.length - 1]} />
+      )}
+      {showComments && <NewComment post={post} index={index} />}
     </div>
-  )}
+  );}
 
 export function AwardPost() {
+    const [feedback, setFeedback] = useState(false)
+
   return (
     <div className="card-div">
       <div className="card-headline">

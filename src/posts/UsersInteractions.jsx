@@ -16,7 +16,7 @@ const userName = "Johanna";
 const userComment =
   "Eos tempora ipsum iusto eius maxime perspiciatis voluptas magnam quidem accusamus repudiandae!.";
 
-export function UsersInteractions({feedback, setFeedback}) {
+export function UsersInteractions({post, feedback, setFeedback}) {
 
   return (
     <div className="interactions-container">
@@ -26,7 +26,7 @@ export function UsersInteractions({feedback, setFeedback}) {
         <img className="voting-up" src={VotingDown} />{" "}
       </div>
       <div className="feedback">
- <SmallButton text="Feedback" feedback={feedback} setFeedback={setFeedback}/>
+ <SmallButton text="Feedback" feedback={feedback} post={post} setFeedback={setFeedback}/>
         </div>
     </div>
   );
@@ -88,7 +88,7 @@ export function NewComment({ post, index }) {
 }
 
 
-export function ShareAFeedback({text, feedback, setFeedback}){
+export function ShareAFeedback({index, post, text, feedback, setFeedback}){
   
 
   return (
@@ -98,16 +98,22 @@ export function ShareAFeedback({text, feedback, setFeedback}){
         text="Super Informativ!"
         feedback={feedback}
         setFeedback={setFeedback}
+        index={index}
+        post={post}
       />
       <ButtonSecondary
         text="Wie Krass!"
         feedback={feedback}
         setFeedback={setFeedback}
+        index={index}
+        post={post}
       />
       <ButtonSecondary
         text="Du erhellst meinen Tag."
         feedback={feedback}
         setFeedback={setFeedback}
+        index={index}
+        post={post}
       />
     </div>
   );
