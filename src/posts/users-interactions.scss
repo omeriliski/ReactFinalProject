@@ -69,3 +69,21 @@
 .yellowtxt {
     @include YellowTxt;
 }
+
+
+.interactions-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    @include DarkBg;
+    @include DropShadow;
+    @include BorderRadius16px;
+    @include Padding16px;
+    @include Margin16;
+    padding-bottom: 16px;
+    margin-bottom: 0px;
+    width: auto;
+    position: absolute;
+    bottom: 0px;
+}

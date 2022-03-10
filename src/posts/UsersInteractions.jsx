@@ -5,6 +5,8 @@ import VotingDown from "./img/votingDown.svg";
 import ArrowDown from "./img/arrowDown.svg";
 import "./users-interactions.scss";
 import { SmallButton } from "./Buttons";
+import { ButtonPrimary } from "./Buttons";
+import { ButtonSecondary } from "./Buttons";
 import { useRef } from "react";
 
 
@@ -29,59 +31,72 @@ export function UsersInteractions() {
   );
 }
 
-export function UserComments() {
+export function UserComments({ post,setShowComments,showComments }) {
+  const showAllComments=()=>{
+    setShowComments(!showComments)
+  }
   return (
     <div className="comments-container">
-      <button className="show-comments">
-        Alle {commentsNumber} Kommentare anzeigen{" "}
-        <img className="arrow-down" src={ArrowDown} />
+      <button className="show-comments" onClick={showAllComments}>
+        Alle {post?.comments?.length} Kommentare anzeigen{" "}
+        <img className="arrow-down" src={ArrowDown}/>
       </button>
     </div>
   );
 }
 
-export function ActualComments() {
-  return (
-    <div className="actual-comment-container">
-      <p className="user-name">{userName}</p>
-      <p className="user-comment">{userComment}</p>
-      <p className="user-comment yellowtxt">2 days ago</p>
-    </div>
-  );
+export function ActualComments({ comment }) {
+  //question: if there is no comment what happens?
+  if(comment==undefined) return <div>no comment</div>;
+  else {
+    return (
+      <div className="actual-comment-container">
+        <p className="user-name">{comment.userName}</p>
+        <p className="user-comment">{comment.userComment}</p>
+        <p className="user-comment yellowtxt">{comment.datum}</p>
+      </div>
+    );
+  }
 }
 
-export function NewComment({ post }) {
-  const { currentUser, postData,setPostData,savePostData } = useContext(PostContext);
+export function NewComment({ post, index }) {
+  const { currentUser, database, savePostData } = useContext(PostContext);
   const commentText = useRef();
+
   const eventHandler = (e) => {
     e.preventDefault();
-    
     const comment = {
       //we should fix email
       userName: currentUser.email,
       userComment: commentText.current.value,
       datum: new Date().toDateString(),
     };
-    postData.find(e=>e==post).comments.push(comment);
-    setPostData(postData);
 
-    const newPostData = {
-      userSettings:{
-            userId:currentUser.uid,
-            userEmail:currentUser.email
-        },
-      postList:postData
-    };
-    
-    savePostData(newPostData);
-
+    const tempDatabase = [...database];
+    tempDatabase[index].comments.push(comment);
+    savePostData(tempDatabase);
   };
   return (
-    <div className="actual-comment-container">
+    <div className="interactions-overlay">
       <form onSubmit={eventHandler}>
-        <input type="text" ref={commentText} />
-        <input type="submit" value="Submit" />
+        <input type="comment-text" ref={commentText} />     
+        <input type="submit" value="Submit" className="button-small"/>
       </form>
     </div>
   );
 }
+
+
+export function ShareAFeedback(text){
+
+  return (
+    <div className="interactions-overlay">
+      <p className="txt-title">Feedback</p>
+      <ButtonSecondary text="Super Informativ!" />
+      <ButtonSecondary text="Wie Krass!" />
+      <ButtonSecondary text="Du erhellst meinen Tag." />
+    </div>
+  );
+}
+
+

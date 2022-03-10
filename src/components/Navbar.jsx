@@ -27,7 +27,7 @@ const Navbar = () => {
       </NavLink>
 
       {currentUser ? (
-        <NavLink to="/create1" className="plus-for-post">
+        <NavLink to="/create" className="plus-for-post">
           <img src={Plus} />{" "}
         </NavLink>
       ) : null}

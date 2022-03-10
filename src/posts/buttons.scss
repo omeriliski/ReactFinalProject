@@ -16,6 +16,9 @@
         @include YellowBg;
         @include PostBodyText;
         @include BlackTxt;
+        &:hover{
+            @include BorderDark;
+        }
 
     }
 
@@ -28,6 +31,11 @@
         @include BorderWhite;
         box-shadow: none;
         @include DarkBg;
+        &:hover{
+            border: none;
+       @include YellowBg;
+       @include BlackTxt;
+        }
     }
 }
 .feedback{

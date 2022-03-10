@@ -17,14 +17,7 @@ const Home = () => {
     <div>
       <TextPost />
       <ShortTextPost />
-      {database.map((data) => {
-        return data.postList.map((post) =>{
-          console.log('post :>> ', post);
-          return <BildTextPost post={post}/>
-        }
-        )
-      } 
-      )}
+      { database?.map((post,index) => <BildTextPost post={post} index={index}/>)}
       <AwardPost />
     </div>
   );
