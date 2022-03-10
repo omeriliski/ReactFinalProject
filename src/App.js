@@ -2,6 +2,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import CreatePost from "./pages/CreatePost";
+import ChooseAPostType from "./pages/ChoosePostType";
 import "./App.scss";
 import "./firebase";
 import Navbar from "./components/Navbar";
@@ -51,7 +52,7 @@ function App() {
     const docRef = doc(db, "posts", "postList");
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      console.log('docSnap.data() :>> ', docSnap.data());
+      console.log("docSnap.data() :>> ", docSnap.data());
       setDatabase(docSnap.data().postList);
     } else {
       console.log("No such document!");
@@ -61,7 +62,7 @@ function App() {
   const savePostData = async (newPostData) => {
     const postsRef = collection(db, "posts");
     setDatabase(newPostData);
-    await setDoc(doc(postsRef, "postList"), {postList:newPostData} );
+    await setDoc(doc(postsRef, "postList"), { postList: newPostData });
   };
 
   useEffect(() => {
@@ -80,12 +81,15 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/create" element={<CreatePost />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route index element={<Home />} />
+          <Route path="create" >
+            <Route index element={<ChooseAPostType />}/>
+            <Route path="text" element={<CreatePost/>}/>
+          </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route
-            path="/*"
+            path="*"
             element={
               currentUser ? <Navigate to="/" /> : <Navigate to="/login" />
             }

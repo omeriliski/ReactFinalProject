@@ -6,76 +6,84 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 
-.voting{
-    display: flex;
-    align-items: center;
-    
-}
-.typo-extras{
-    @include typo-extras;
-    @include WhiteTxt;
-    @include Padding8px
+    .voting {
+        display: flex;
+        align-items: center;
 
-
-}
-
-
-    .button-feedback {
-        @include BorderWhiteR16;
-        @include CommentsButtons;
-        background: none;
-        padding-inline: 16px;
-
-        &:hover {
-            cursor: pointer;
-            @include YellowTxt;
-            @include YellowBorder
-        }
     }
+
+    .typo-extras {
+        @include typo-extras;
+        @include WhiteTxt;
+        @include Padding8px
+    }
+
+
+
 }
 
-.comments-container{
+.comments-container {
     @include Margin8;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: start;
 
-    .show-comments{
+    .show-comments {
         border: none;
         background: none;
         @include typo-extras;
-    @include YellowTxt;
-    display: flex;
-    align-items: center;
-    .arrow-down{
-        @include Padding8px;
-    }
+        @include YellowTxt;
+        display: flex;
+        align-items: center;
+
+        .arrow-down {
+            @include Padding8px;
+        }
     }
 }
 
-.actual-comment-container{
+.actual-comment-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
 
-    .user-name{
+    .user-name {
         @include typo-extras-semibold;
         @include WhiteTxt;
         @include Margin0;
     }
-    .user-comment{
+
+    .user-comment {
         display: flex;
         @include TextLeft;
         @include typo-extras;
         @include Margin0;
         @include WhiteTxt
-
     }
 }
 
-.yellowtxt{
+.yellowtxt {
     @include YellowTxt;
+}
+
+
+.interactions-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    @include DarkBg;
+    @include DropShadow;
+    @include BorderRadius16px;
+    @include Padding16px;
+    @include Margin16;
+    padding-bottom: 16px;
+    margin-bottom: 0px;
+    width: auto;
+    position: absolute;
+    bottom: 0px;
 }

@@ -4,7 +4,12 @@ import VotingUp from "./img/votingUp.svg";
 import VotingDown from "./img/votingDown.svg";
 import ArrowDown from "./img/arrowDown.svg";
 import "./users-interactions.scss";
+import { SmallButton } from "./Buttons";
+import { ButtonPrimary } from "./Buttons";
+import { ButtonSecondary } from "./Buttons";
 import { useRef } from "react";
+
+
 const votingNumber = 4;
 const commentsNumber = 9;
 const userName = "Johanna";
@@ -20,8 +25,8 @@ export function UsersInteractions() {
         <img className="voting-up" src={VotingDown} />{" "}
       </div>
       <div className="feedback">
-        <button className="button-feedback">Feedback</button>
-      </div>
+ <SmallButton text="Feedback"/>
+        </div>
     </div>
   );
 }
@@ -66,35 +71,32 @@ export function NewComment({ post, index }) {
       userComment: commentText.current.value,
       datum: new Date().toDateString(),
     };
-    // postData.find(item=>item==post).comments.push(comment);
-
-    // setPostData(postData);
-
-    // const newPostData = {
-    //   userSettings:{
-    //         userId:currentUser.uid,
-    //         userEmail:currentUser.email
-    //     },
-    //   postList:postData
-    // };
-
-    // savePostData(newPostData);
-    // const data = database.find(data=>data.postUserId===post.uid);
-    // console.log('data :>> ', data);
-    // const postFound = data.postList.find(item=>item==post)
-    // console.log('post :>> ', post);
-    // console.log('postFound :>> ', postFound);
 
     const tempDatabase = [...database];
     tempDatabase[index].comments.push(comment);
     savePostData(tempDatabase);
   };
   return (
-    <div className="actual-comment-container">
+    <div className="interactions-overlay">
       <form onSubmit={eventHandler}>
-        <input type="text" ref={commentText} />
-        <input type="submit" value="Submit" />
+        <input type="comment-text" ref={commentText} />     
+        <input type="submit" value="Submit" className="button-small"/>
       </form>
     </div>
   );
 }
+
+
+export function ShareAFeedback(text){
+
+  return (
+    <div className="interactions-overlay">
+      <p className="txt-title">Feedback</p>
+      <ButtonSecondary text="Super Informativ!" />
+      <ButtonSecondary text="Wie Krass!" />
+      <ButtonSecondary text="Du erhellst meinen Tag." />
+    </div>
+  );
+}
+
+

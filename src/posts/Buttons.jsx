@@ -16,3 +16,12 @@ export function ButtonSecondary({text}) {
     </div>
   );
 }
+
+export function SmallButton({text}){
+  return (
+    <div className="button-container">
+      <button className="button-small">{text}</button>
+    </div>
+  );
+}
+
