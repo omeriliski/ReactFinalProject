@@ -45,7 +45,7 @@ const CreateAudio = () => {
 
     console.log("file :>> ", audioBlob);
     if (!audioBlob) return;
-    const storageRef = ref(storage, `files/${audioBlob.name}`);
+    const storageRef = ref(storage, `files/${Date.now()}`);
     const uploadTask = uploadBytesResumable(storageRef, audioBlob);
 
     uploadTask.on(
