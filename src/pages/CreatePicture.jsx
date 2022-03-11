@@ -40,7 +40,7 @@ const CreatePicture = () => {
       dislike: 0,
       postType:"picture"
     };
-    const newPostData = [...database, newPost]
+    const newPostData = [newPost, ...database]
     //   userSettings: {
     //     userId: currentUser.uid,
     //     userEmail: currentUser.email,

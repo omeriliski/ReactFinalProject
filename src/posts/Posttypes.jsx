@@ -6,8 +6,9 @@ import Image from "./img/postbild.jpg"
 import { useState } from "react";
 
 
-export function TextPost() {
+export function TextPost({post,index}) {
   const [feedback, setFeedback] = useState(false)
+  const [showComments,setShowComments] = useState(false);
   return (
     <div className="card-div">
       <div className="card-header">
@@ -20,25 +21,33 @@ export function TextPost() {
       </div>
       <div className="post-text-content">
         <div className="txt-title">
-          <p>Lorem ipsum dolor sit amet.</p>
+          <p>{post.postTitle}</p>
         </div>
         <div className="body-txt">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-            laborum labore natus quam deleniti quae repellat officiis eius
-            mollitia totam, asperiores saepe! Magnam saepe quaerat sit ut ab,
-            delectus quae error ratione ea minus perferendis deleniti incidunt
-            nam voluptates et aliquam iure necessitatibus illo. Ipsam optio
-            inventore totam doloribus unde.
-          </p>
+          <p>{post.postText}</p>
         </div>
       </div>
       {feedback && (
-        <ShareAFeedback setFeedback={setFeedback} feedback={feedback} />
+        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
       )}
-      <UsersInteractions setFeedback={setFeedback} feedback={feedback} />
-      <UserComments />
-      <ActualComments />
+      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} />
+      <UserComments
+        post={post}
+        setShowComments={setShowComments}
+        showComments={showComments}
+      />
+      <div className="comments-newcomments-container">
+        <div className="comments-container">
+          {showComments ? (
+            post.comments.map((comment) => <ActualComments comment={comment} />)
+            ) : (
+              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          )}
+        </div>
+        {showComments &&<div className="newcomments-container">
+           <NewComment post={post} index={index} />
+        </div>}
+      </div>
     </div>
   );}
 export function ShortTextPost() {
@@ -174,6 +183,57 @@ export function BildTextPost({post,index}) {
             <source src={post.imgUrl} type="video/ogg"/>
             Your browser does not support the video tag.
           </video>
+        </div>
+        <div className="txt-title">
+          <p>{post.postTitle}</p>
+        </div>
+        <div className="body-txt">
+          <p>{post.postText}</p>
+        </div>
+      </div>
+      {feedback && (
+        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
+      )}
+      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} />
+      <UserComments
+        post={post}
+        setShowComments={setShowComments}
+        showComments={showComments}
+      />
+      <div className="comments-newcomments-container">
+        <div className="comments-container">
+          {showComments ? (
+            post.comments.map((comment) => <ActualComments comment={comment} />)
+            ) : (
+              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          )}
+        </div>
+        {showComments &&<div className="newcomments-container">
+           <NewComment post={post} index={index} />
+        </div>}
+      </div>
+    </div>
+  );}
+
+
+  export function AudioPost({post,index}) {
+    const [feedback, setFeedback] = useState(false);
+
+  const [showComments,setShowComments] = useState(false);
+  return (
+    <div className="card-div">
+      <div className="card-header">
+        {" "}
+        <div className="user-header">
+          <div className="user-pic"></div>{" "}
+          <p className="user-name">Laura Konig</p>
+        </div>
+        <img className="more" src={More} />
+      </div>
+      <div className="post-text-content">
+        <div className="picture-wrapper">
+          {/* <img className="image-src" src={post.imgUrl} /> */}
+          <audio src={post.audioUrl} controls />
         </div>
         <div className="txt-title">
           <p>{post.postTitle}</p>

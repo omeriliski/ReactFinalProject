@@ -4,6 +4,7 @@ import {
   BildTextPost,
   ShortTextPost,
   VideoPost,
+  AudioPost
 } from "../posts/Posttypes";
 import { useContext } from "react";
 import { PostContext } from "../App";
@@ -29,6 +30,8 @@ const Home = () => {
               return <AwardPost post={post} index={index}/>
             case "video":
               return <VideoPost post={post} index={index}/>
+            case "audio":
+              return <AudioPost post={post} index={index}/>
             default:
               break;
           }

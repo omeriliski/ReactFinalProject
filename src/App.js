@@ -5,6 +5,8 @@ import CreatePicture from "./pages/CreatePicture";
 import ChooseAPostType from "./pages/ChoosePostType";
 import CreateText from "./pages/CreateText";
 import CreateVideo from "./pages/CreateVideo";
+import CreateSurvey from "./pages/CreateSurvey";
+import CreateAudio from "./pages/CreateAudioRecorder";
 import "./App.scss";
 import "./firebase";
 import Navbar from "./components/Navbar";
@@ -90,6 +92,8 @@ function App() {
             <Route path="picture" element={<CreatePicture/>}/>
             <Route path="text" element={<CreateText/>}/>
             <Route path="video" element={<CreateVideo/>}/>
+            <Route path="survey" element={<CreateSurvey/>}/>
+            <Route path="audio" element={<CreateAudio/>}/>
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

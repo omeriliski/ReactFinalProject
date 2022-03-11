@@ -14,7 +14,7 @@ import { storage } from "../firebase";
 import "./CreatePicture.scss";
 import { ButtonPrimary } from "../posts/Buttons";
 
-const CreateText = () => {
+const CreateSurvey = () => {
   const [imageURL, setImageURL] = useState();
   const [progress, setProgress] = useState(0);
 
@@ -40,7 +40,7 @@ const CreateText = () => {
       dislike: 0,
       postType:"text"
     };
-    const newPostData = [newPost, ...database]
+    const newPostData = [newPost,...database]
   
     savePostData(newPostData);
     getPostData();
@@ -64,4 +64,4 @@ const CreateText = () => {
     </div>
   );
 };
-export default CreateText;
+export default CreateSurvey;

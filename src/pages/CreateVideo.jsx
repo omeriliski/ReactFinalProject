@@ -40,7 +40,7 @@ const CreateVideo = () => {
       dislike: 0,
       postType:"video"
     };
-    const newPostData = [...database, newPost]
+    const newPostData = [newPost,...database]
     //   userSettings: {
     //     userId: currentUser.uid,
     //     userEmail: currentUser.email,
@@ -97,7 +97,7 @@ const CreateVideo = () => {
           {/* <img src={imageURL} /> */}
           <video width="320" height="240" controls>
             <source src={imageURL} type="video/mp4"/>
-            <source src="movie.ogg" type="video/ogg"/>
+            <source src={imageURL} type="video/ogg"/>
             Your browser does not support the video tag.
           </video>
 
