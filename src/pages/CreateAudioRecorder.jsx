@@ -42,10 +42,9 @@ const CreateAudio = () => {
     const audioBlob = await fetch(mediaBlobUrl).then(r => r.blob());
     console.log("audioBlob==>>",audioBlob);
 
-
     console.log("file :>> ", audioBlob);
     if (!audioBlob) return;
-    const storageRef = ref(storage, `files/${audioBlob.name}`);
+    const storageRef = ref(storage, `files/${Date.now()}`);
     const uploadTask = uploadBytesResumable(storageRef, audioBlob);
 
     uploadTask.on(
