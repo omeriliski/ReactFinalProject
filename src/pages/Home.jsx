@@ -3,7 +3,7 @@ import {
   AwardPost,
   BildTextPost,
   ShortTextPost,
-  Post,
+  VideoPost,
 } from "../posts/Posttypes";
 import { useContext } from "react";
 import { PostContext } from "../App";
@@ -16,14 +16,24 @@ const Home = () => {
 
   return (
     <div>
-      {/* {database.map((post, index) => (
-        <Post post={post} index={index} />
-      ))} */}
-
-      {/* <TextPost />
-      <ShortTextPost /> */}
-      { database?.map((post,index) => <BildTextPost post={post} index={index}/>)}
-      {/* <AwardPost /> */}
+      {
+        database.map((post,index)=>{
+          switch (post.postType) {
+            case "picture":
+              return <BildTextPost post={post} index={index}/>
+            case "text":
+              return <TextPost post={post} index={index}/>
+            case "shortText":
+              return <ShortTextPost post={post} index={index}/>
+            case "awardPost":
+              return <AwardPost post={post} index={index}/>
+            case "video":
+              return <VideoPost post={post} index={index}/>
+            default:
+              break;
+          }
+        })
+      }
     </div>
   );
 };

@@ -136,14 +136,76 @@ export function BildTextPost({post,index}) {
         setShowComments={setShowComments}
         showComments={showComments}
       />
-      {showComments ? (
-        post.comments.map((comment) => <ActualComments comment={comment} />)
-      ) : (
-        <ActualComments comment={post.comments[post.comments.length - 1]} />
-      )}
-      {showComments && <NewComment post={post} index={index} />}
+      <div className="comments-newcomments-container">
+        <div className="comments-container">
+          {showComments ? (
+            post.comments.map((comment) => <ActualComments comment={comment} />)
+            ) : (
+              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          )}
+        </div>
+        {showComments &&<div className="newcomments-container">
+           <NewComment post={post} index={index} />
+        </div>}
+      </div>
     </div>
   );}
+
+
+  export function VideoPost({post,index}) {
+    const [feedback, setFeedback] = useState(false);
+
+  const [showComments,setShowComments] = useState(false);
+  return (
+    <div className="card-div">
+      <div className="card-header">
+        {" "}
+        <div className="user-header">
+          <div className="user-pic"></div>{" "}
+          <p className="user-name">Laura Konig</p>
+        </div>
+        <img className="more" src={More} />
+      </div>
+      <div className="post-text-content">
+        <div className="picture-wrapper">
+          {/* <img className="image-src" src={post.imgUrl} /> */}
+          <video width="320" height="240" controls>
+            <source src={post.imgUrl} type="video/mp4"/>
+            <source src={post.imgUrl} type="video/ogg"/>
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div className="txt-title">
+          <p>{post.postTitle}</p>
+        </div>
+        <div className="body-txt">
+          <p>{post.postText}</p>
+        </div>
+      </div>
+      {feedback && (
+        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
+      )}
+      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} />
+      <UserComments
+        post={post}
+        setShowComments={setShowComments}
+        showComments={showComments}
+      />
+      <div className="comments-newcomments-container">
+        <div className="comments-container">
+          {showComments ? (
+            post.comments.map((comment) => <ActualComments comment={comment} />)
+            ) : (
+              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          )}
+        </div>
+        {showComments &&<div className="newcomments-container">
+           <NewComment post={post} index={index} />
+        </div>}
+      </div>
+    </div>
+  );}
+
 
 export function AwardPost() {
     const [feedback, setFeedback] = useState(false)

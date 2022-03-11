@@ -1,8 +1,10 @@
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import CreatePost from "./pages/CreatePost";
+import CreatePicture from "./pages/CreatePicture";
 import ChooseAPostType from "./pages/ChoosePostType";
+import CreateText from "./pages/CreateText";
+import CreateVideo from "./pages/CreateVideo";
 import "./App.scss";
 import "./firebase";
 import Navbar from "./components/Navbar";
@@ -85,7 +87,9 @@ function App() {
           <Route index element={<Home />} />
           <Route path="create" >
             <Route index element={<ChooseAPostType />}/>
-            <Route path="text" element={<CreatePost/>}/>
+            <Route path="picture" element={<CreatePicture/>}/>
+            <Route path="text" element={<CreateText/>}/>
+            <Route path="video" element={<CreateVideo/>}/>
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

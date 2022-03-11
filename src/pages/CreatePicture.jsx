@@ -2,30 +2,23 @@ import { useContext, useRef, useState } from "react";
 import { PostContext } from "../App";
 import { Navigate } from "react-router-dom";
 import {
-  collection,
   getFirestore,
-  getDoc,
-  getDocs,
-  doc,
-  setDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import {
   getDownloadURL,
-  getStorage,
   ref,
-  uploadBytes,
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../firebase";
-import "./CreatePost.scss";
+import "./CreatePicture.scss";
 import { ButtonPrimary } from "../posts/Buttons";
 
-const CreatePost = () => {
+const CreatePicture = () => {
   const [imageURL, setImageURL] = useState();
   const [progress, setProgress] = useState(0);
 
-  const { currentUser, postData, savePostData, database, getAllData } =
+  const { currentUser, savePostData, database,getPostData } =
     useContext(PostContext);
 
   const img = useRef();
@@ -45,7 +38,7 @@ const CreatePost = () => {
       comments: [],
       like: 0,
       dislike: 0,
-      postType:"BildTextPost"
+      postType:"picture"
     };
     const newPostData = [...database, newPost]
     //   userSettings: {
@@ -54,7 +47,7 @@ const CreatePost = () => {
     //   },
     
     savePostData(newPostData);
-    getAllData();
+    getPostData();
   };
 
   const uploadFile = (file) => {
@@ -125,4 +118,4 @@ const CreatePost = () => {
     </div>
   );
 };
-export default CreatePost;
+export default CreatePicture;
