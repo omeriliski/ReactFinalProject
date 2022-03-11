@@ -45,14 +45,14 @@ const CreatePost = () => {
       comments: [],
       like: 0,
       dislike: 0,
+      postType:"BildTextPost"
     };
-    const newPostData = {
-      userSettings: {
-        userId: currentUser.uid,
-        userEmail: currentUser.email,
-      },
-      postList: [...postData, newPost],
-    };
+    const newPostData = [...database, newPost]
+    //   userSettings: {
+    //     userId: currentUser.uid,
+    //     userEmail: currentUser.email,
+    //   },
+    
     savePostData(newPostData);
     getAllData();
   };
