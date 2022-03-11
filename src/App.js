@@ -75,10 +75,11 @@ function App() {
         setCurrentUser,
         savePostData,
         database,
+        setDatabase,
         getPostData,
       }}
     >
-      <div className="App">
+<div className="App">
         <Navbar />
         <Routes>
           <Route index element={<Home />} />

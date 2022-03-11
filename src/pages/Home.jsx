@@ -3,6 +3,7 @@ import {
   AwardPost,
   BildTextPost,
   ShortTextPost,
+  Post,
 } from "../posts/Posttypes";
 import { useContext } from "react";
 import { PostContext } from "../App";
@@ -15,10 +16,14 @@ const Home = () => {
 
   return (
     <div>
-      <TextPost />
-      <ShortTextPost />
+      {/* {database.map((post, index) => (
+        <Post post={post} index={index} />
+      ))} */}
+
+      {/* <TextPost />
+      <ShortTextPost /> */}
       { database?.map((post,index) => <BildTextPost post={post} index={index}/>)}
-      <AwardPost />
+      {/* <AwardPost /> */}
     </div>
   );
 };
