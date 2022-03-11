@@ -11,7 +11,7 @@ import VideoIcon from "./src/Icon_Video.svg";
 export default function ChooseAPostType() {
   return (
     <div className="wrapper-grid">
-      <NavLink to="/create/text">
+      <NavLink to="/create/picture">
         <div className="tile-card">
           <img src={Image} alt="" />
           <p className="card-text">Bild</p>
@@ -29,13 +29,13 @@ export default function ChooseAPostType() {
           <p className="card-text">Umfrage</p>
         </div>
       </NavLink>
-      <NavLink to="text">
+      <NavLink to="video">
         <div className="tile-card">
           <img src={VideoIcon} alt="" />
           <p className="card-text">Video</p>
         </div>
       </NavLink>
-      <NavLink to="text">
+      <NavLink to="audio">
         <div className="tile-card">
           <img src={Audio} alt="" />
           <p className="card-text">Audio</p>

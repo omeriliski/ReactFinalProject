@@ -2,30 +2,23 @@ import { useContext, useRef, useState } from "react";
 import { PostContext } from "../App";
 import { Navigate } from "react-router-dom";
 import {
-  collection,
   getFirestore,
-  getDoc,
-  getDocs,
-  doc,
-  setDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import {
   getDownloadURL,
-  getStorage,
   ref,
-  uploadBytes,
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../firebase";
-import "./CreatePost.scss";
+import "./CreatePicture.scss";
 import { ButtonPrimary } from "../posts/Buttons";
 
-const CreatePost = () => {
+const CreateVideo = () => {
   const [imageURL, setImageURL] = useState();
   const [progress, setProgress] = useState(0);
 
-  const { currentUser, postData, savePostData, database, getAllData } =
+  const { currentUser, savePostData, database,getPostData } =
     useContext(PostContext);
 
   const img = useRef();
@@ -45,16 +38,16 @@ const CreatePost = () => {
       comments: [],
       like: 0,
       dislike: 0,
+      postType:"video"
     };
-    const newPostData = {
-      userSettings: {
-        userId: currentUser.uid,
-        userEmail: currentUser.email,
-      },
-      postList: [...postData, newPost],
-    };
+    const newPostData = [newPost,...database]
+    //   userSettings: {
+    //     userId: currentUser.uid,
+    //     userEmail: currentUser.email,
+    //   },
+    
     savePostData(newPostData);
-    getAllData();
+    getPostData();
   };
 
   const uploadFile = (file) => {
@@ -77,14 +70,6 @@ const CreatePost = () => {
         );
       }
     );
-
-    // const storage = getStorage();
-    //const storageRef = ref(storage, URL.createObjectURL(img.current.files[0]));
-
-    // 'file' comes from the Blob or File API
-    // uploadBytes(storageRef, file).then((snapshot) => {
-    //   console.log('Uploaded a blob or file!');
-    // });
   };
 
   const handleSubmit = (e) => {
@@ -106,10 +91,15 @@ const CreatePost = () => {
           <input
             ref={img}
             type="file"
-            accept="image/*"
+            accept="video/*"
             placeholder="Bild hinzufügen"
           />
-          <img src={imageURL} />
+          {/* <img src={imageURL} /> */}
+          <video width="320" height="240" controls>
+            <source src={imageURL} type="video/mp4"/>
+            <source src={imageURL} type="video/ogg"/>
+            Your browser does not support the video tag.
+          </video>
 
           <h3>Uploaded {progress} %</h3>
           <input ref={postTitle} type="text" placeholder="Titel hinzufügen" />
@@ -125,4 +115,4 @@ const CreatePost = () => {
     </div>
   );
 };
-export default CreatePost;
+export default CreateVideo;

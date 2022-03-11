@@ -80,7 +80,7 @@ export function NewComment({ post, index }) {
   return (
     <div className="interactions-overlay">
       <form onSubmit={eventHandler}>
-        <input type="comment-text" ref={commentText} />     
+        <input type="comment-text"  ref={commentText} />     
         <input type="submit" value="Submit" className="button-small"/>
       </form>
     </div>
