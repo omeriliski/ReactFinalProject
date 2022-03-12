@@ -22,7 +22,9 @@ const Home = () => {
 
       {/* <TextPost />
       <ShortTextPost /> */}
+      
       { database?.map((post,index) => <BildTextPost post={post} index={index}/>)}
+
       {/* <AwardPost /> */}
     </div>
   );
