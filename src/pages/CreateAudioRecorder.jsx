@@ -28,9 +28,8 @@ const CreateAudio = () => {
       postText: postText.current.value,
       audioUrl,
       comments: [],
-      like: 0,
-      dislike: 0,
       postType: "audio",
+      vote:[]
     };
     const newPostData = [newPost, ...database];
 

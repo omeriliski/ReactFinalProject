@@ -15,50 +15,51 @@ import "./CreatePicture.scss";
 import { ButtonPrimary } from "../posts/Buttons";
 
 const CreateSurvey = () => {
-  const [imageURL, setImageURL] = useState();
-  const [progress, setProgress] = useState(0);
 
   const { currentUser, savePostData, database,getPostData } =useContext(PostContext);
+  const [optionsCount,setOptionsCount] = useState(1);
+  const [options, setOptions] = useState([])
 
-  const img = useRef();
-  const postTitle = useRef();
-  const postText = useRef();
+  const question = useRef();
 
   const db = getFirestore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const currentUsersPosts = database.find(data=>data.userSettings.uid==currentUser.uid);
-    // console.log('currentUsersPosts :>> ', currentUsersPosts);
 
     const newPost = {
-      postTitle: postTitle.current.value,
-      postText: postText.current.value,
-      imgUrl:"",
+      question: question.current.value,
+      options,
       comments: [],
-      like: 0,
-      dislike: 0,
-      postType:"text"
+      postType:"survey",
+      vote:[]
     };
     const newPostData = [newPost,...database]
-  
     savePostData(newPostData);
     getPostData();
   };
+  const optionsFunction=()=>setOptionsCount(optionsCount+1)
+  const getOptions=(e,index)=>{
+    const arr=[...options];
+    arr[index]=e.target.value;
+    setOptions(arr);
+    console.log('arr :>> ', arr);
+  }
 
   if (!currentUser) return <Navigate to="login" />;
   return (
     <div>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <input ref={postTitle} type="text" placeholder="Titel hinzufügen" />
           <textarea
-            ref={postText}
+            ref={question}
             rows="4"
             cols="40"
-            placeholder="Text hinzufügen"
+            placeholder="Frage hinzufügen"
           ></textarea>
-          <ButtonPrimary text="Teilen" />
+          {[...Array(optionsCount)].map((item,index)=><input onChange={(e)=>getOptions(e,index)} type="text" placeholder="Option hinzufügen" />)}
+          <input type="button" value="add" onClick={optionsFunction}/>
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     </div>

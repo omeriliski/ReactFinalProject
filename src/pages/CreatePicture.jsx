@@ -36,9 +36,8 @@ const CreatePicture = () => {
       postText: postText.current.value,
       imgUrl,
       comments: [],
-      like: 0,
-      dislike: 0,
-      postType:"picture"
+      postType:"picture",
+      vote:[]
     };
     const newPostData = [newPost, ...database]
     //   userSettings: {

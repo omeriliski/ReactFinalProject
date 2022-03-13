@@ -34,11 +34,9 @@ const CreateText = () => {
     const newPost = {
       postTitle: postTitle.current.value,
       postText: postText.current.value,
-      imgUrl:"",
       comments: [],
-      like: 0,
-      dislike: 0,
-      postType:"text"
+      postType:"text",
+      vote:[]
     };
     const newPostData = [newPost, ...database]
   
