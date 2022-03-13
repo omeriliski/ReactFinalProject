@@ -23,7 +23,7 @@ export default function ChooseAPostType() {
           <p className="card-text">Text</p>
         </div>
       </NavLink>
-      <NavLink to="text">
+      <NavLink to="survey">
         <div className="tile-card">
           <img src={Umfrage} alt="" />
           <p className="card-text">Umfrage</p>

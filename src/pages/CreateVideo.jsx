@@ -36,9 +36,8 @@ const CreateVideo = () => {
       postText: postText.current.value,
       imgUrl,
       comments: [],
-      like: 0,
-      dislike: 0,
-      postType:"video"
+      postType:"video",
+      vote:[]
     };
     const newPostData = [newPost,...database]
     //   userSettings: {

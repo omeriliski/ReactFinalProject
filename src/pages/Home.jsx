@@ -4,7 +4,8 @@ import {
   BildTextPost,
   ShortTextPost,
   VideoPost,
-  AudioPost
+  AudioPost,
+  UmfragePost
 } from "../posts/Posttypes";
 import { useContext } from "react";
 import { PostContext } from "../App";
@@ -32,6 +33,8 @@ const Home = () => {
               return <VideoPost post={post} index={index}/>
             case "audio":
               return <AudioPost post={post} index={index}/>
+            case "survey":
+              return <UmfragePost post={post} index={index}/>
             default:
               break;
           }

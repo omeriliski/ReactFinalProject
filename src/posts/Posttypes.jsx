@@ -30,7 +30,7 @@ export function TextPost({post,index}) {
       {feedback && (
         <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
       )}
-      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
       <UserComments
         post={post}
         setShowComments={setShowComments}
@@ -50,7 +50,7 @@ export function TextPost({post,index}) {
       </div>
     </div>
   );}
-export function ShortTextPost() {
+export function ShortTextPost({post,index}) {
     const [feedback, setFeedback] = useState(false);
 
   return (
@@ -74,15 +74,15 @@ export function ShortTextPost() {
       {feedback && (
         <ShareAFeedback setFeedback={setFeedback} feedback={feedback} />
       )}
-      <UsersInteractions setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
       <UserComments />
       <ActualComments />
     </div>
   );}
 
-export function UmfragePost() {
+export function UmfragePost({post,index}) {
     const [feedback, setFeedback] = useState(false);
-
+    const [showComments,setShowComments] = useState(false);
   return (
     <div className="card-div">
       <div className="card-header">
@@ -95,18 +95,35 @@ export function UmfragePost() {
       </div>
       <div className="post-text-content">
         <div className="card-headline">
-          <p>Lorem ipsum dolor sit amet?</p>
+          <p>{post.question}</p>
         </div>
-        <div className="txt-title">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        {post.options.map(item=>
+          <div className="txt-title">
+            <p>{item}</p>
         </div>
+        )}
       </div>
       {feedback && (
-        <ShareAFeedback setFeedback={setFeedback} feedback={feedback} />
+        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
       )}
-      <UsersInteractions setFeedback={setFeedback} feedback={feedback} />
-      <UserComments />
-      <ActualComments />
+      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} index={index}/>
+      <UserComments
+        post={post}
+        setShowComments={setShowComments}
+        showComments={showComments}
+      />
+      <div className="comments-newcomments-container">
+        <div className="comments-container">
+          {showComments ? (
+            post.comments.map((comment) => <ActualComments comment={comment} />)
+            ) : (
+              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          )}
+        </div>
+        {showComments &&<div className="newcomments-container">
+           <NewComment post={post} index={index} />
+        </div>}
+      </div>
     </div>
   );}
 
@@ -139,7 +156,7 @@ export function BildTextPost({post,index}) {
       {feedback && (
         <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
       )}
-      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
       <UserComments
         post={post}
         setShowComments={setShowComments}
@@ -194,7 +211,7 @@ export function BildTextPost({post,index}) {
       {feedback && (
         <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
       )}
-      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
       <UserComments
         post={post}
         setShowComments={setShowComments}
@@ -245,7 +262,7 @@ export function BildTextPost({post,index}) {
       {feedback && (
         <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
       )}
-      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
       <UserComments
         post={post}
         setShowComments={setShowComments}

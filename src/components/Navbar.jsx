@@ -6,7 +6,7 @@ import "./Navbar.scss";
 import "../App.scss";
 import Plus from "../posts/img/plus.svg";
 import Logo from "../posts/img/logo.svg";
-import { SmallButton } from "../posts/Buttons";
+import { LogRegisterButton } from "../posts/Buttons";
 
 const Navbar = () => {
   const { currentUser, setCurrentUser } = useContext(PostContext);
@@ -36,18 +36,19 @@ const Navbar = () => {
 
       {currentUser ? (
         <NavLink to="/login" onClick={logout}>
-          <SmallButton text="Logout" />
+          <LogRegisterButton text="Logout" />
         </NavLink>
       ) : null}
 
+        {/* question: do we need this two buttons? */}
       {!currentUser && location.pathname != "/login" ? (
         <NavLink to="/login" >
-          <SmallButton text="Anmelden"/>
+          <LogRegisterButton text="Anmelden"/>
         </NavLink>
       ) : null}
       {/* {!currentUser && location.pathname != "/register" ? (
         <NavLink to="/register">
-          <SmallButton text="Registrieren" />
+          <LogRegisterButton text="Registrieren" />
         </NavLink>
       ) : null} */}
     </div>
