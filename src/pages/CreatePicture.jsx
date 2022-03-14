@@ -3,7 +3,6 @@ import { PostContext } from "../App";
 import { Navigate } from "react-router-dom";
 import Plus from "../posts/img/plus.svg";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase";
 import "./CreatePostInput.scss";
