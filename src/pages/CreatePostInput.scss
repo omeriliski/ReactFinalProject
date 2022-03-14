@@ -1,6 +1,16 @@
 @import "../mixins.scss";
 
 
+.d-none{
+    opacity: 0;
+}
+button{
+background-color: #2E2E2E;
+border: none;
+@include DarkBg;
+@include Margin8;
+}
+
 .form-container {
     margin: 3rem;
     display: flex;
@@ -48,11 +58,15 @@
     justify-content: center;
     align-items: center;
 }
-    audio {
-        text-decoration: none;
-        @include DropShadow;
-        @include DarkBg;
-        
+audio {
+    text-decoration: none;
+    @include DropShadow;
+    @include DarkBg;
+    @include BorderRadius32px;
+    width: 100%;
+    background-color: none;
+
+
     }
 }
 .file-input-wrapper2{
