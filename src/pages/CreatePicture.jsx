@@ -89,7 +89,7 @@ const CreatePicture = () => {
   return (
     <div>
       <div className="card-div">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-css">
           <div className="file-input-wrapper">
             <img src={imageURL} />
             <input
