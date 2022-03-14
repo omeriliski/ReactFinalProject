@@ -25,19 +25,25 @@
 }
 
 .comments-container {
+    display: block;
     @include Margin8;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: start;
+    align-items:flex-start;
+        justify-content:left;
 
     .show-comments {
+        text-align: left;
         border: none;
         background: none;
         @include typo-extras;
         @include YellowTxt;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        justify-content: left;
+        align-items:flex-start;
+            display: block;
+
 
         .arrow-down {
             @include Padding8px;
@@ -47,10 +53,10 @@
 
 .actual-comment-container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     .user-name {
         @include typo-extras-semibold;
         @include WhiteTxt;
@@ -59,6 +65,7 @@
 
     .user-comment {
         display: flex;
+        flex-direction: row;
         @include TextLeft;
         @include typo-extras;
         @include Margin0;
@@ -86,5 +93,47 @@
     margin-bottom: 0px;
     width: auto;
     position: absolute;
-    bottom: 0px;
+    bottom: 10px;
+
+}
+.comment-wrapper{
+
+
+display: flex;
+width: 100%;
+flex-direction: column;
+position: absolute;
+bottom: 0px;
+left: 0px;
+align-items: flex-start;
+justify-content: left;
+
+form{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 16px;
+    .input-comment{
+        height: 45px;
+               @include Margin8;
+               @include Padding8px;
+               text-decoration: none;
+               @include PostBodyText;
+               background: #2E2E2E;
+               border: none;
+               /* DM_NiceInnerShadow */
+
+               box-shadow: inset -3px -3px 8px rgba(100, 100, 100, 0.4),
+               inset 3px 3px 8px rgba(0, 0, 0, 0.4);
+               border-radius: 16px;
+               @include typo-extras;
+               @include WhiteTxt;
+    }
+    .button-small{
+        height: 24px;
+    }
+    &::after{
+        content: "↑";
+        @include typo-extras;
+    }
+}
 }

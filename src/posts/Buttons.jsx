@@ -37,7 +37,17 @@ console.log(post?.feedback);
   return (
     <div className="button-container">
       <button className="button-small" onClick={feedbackClick}>
-        {post?.feedback}
+        {post? post.feedback : "Feedback"}
+      </button>
+    </div>
+  );
+}
+export function ButtonMenu({text}){
+
+  return (
+    <div className="button-container">
+      <button className="button-small">
+        {text}
       </button>
     </div>
   );

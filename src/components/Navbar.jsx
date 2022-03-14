@@ -6,7 +6,7 @@ import "./Navbar.scss";
 import "../App.scss";
 import Plus from "../posts/img/plus.svg";
 import Logo from "../posts/img/logo.svg";
-import { SmallButton } from "../posts/Buttons";
+import { ButtonMenu, SmallButton } from "../posts/Buttons";
 
 const Navbar = () => {
   const { currentUser, setCurrentUser } = useContext(PostContext);
@@ -36,13 +36,13 @@ const Navbar = () => {
 
       {currentUser ? (
         <NavLink to="/login" onClick={logout}>
-          <SmallButton text="Logout" />
+          <ButtonMenu text="Logout" />
         </NavLink>
       ) : null}
 
       {!currentUser && location.pathname != "/login" ? (
-        <NavLink to="/login" >
-          <SmallButton text="Anmelden"/>
+        <NavLink to="/login">
+          <ButtonMenu text="Anmelden" />
         </NavLink>
       ) : null}
       {/* {!currentUser && location.pathname != "/register" ? (
