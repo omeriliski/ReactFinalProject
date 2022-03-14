@@ -26,7 +26,13 @@
     @include DarkBg;
 
     img {
-        @include Padding16px
+        @include Padding16px;
+        
+    }
+    .plus-for-post{
+        position: absolute;
+        left: 292px;
+        transform: translateX(-50%)
     }
 
 }
