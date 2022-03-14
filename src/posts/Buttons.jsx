@@ -10,7 +10,7 @@ export function ButtonPrimary({text, handleSubmit}) {
   );
 }
 
-export function ButtonSecondary({index, post, text, feedback, setFeedback}) {
+export function ButtonSecondary({index, post, text, feedback, setFeedback, }) {
     const { savePostData,database, setDatabase } = useContext(PostContext);
 
   function closeButton(){
@@ -25,6 +25,16 @@ export function ButtonSecondary({index, post, text, feedback, setFeedback}) {
   return (
     <div className="button-wrapper">
       <input type="button" className="button-secondary" value={text} onClick={closeButton} />
+    </div>
+  );
+}
+export function AnswerButtonSecondary({index, post, text, handleAnswer}) {
+    const { savePostData,database, setDatabase } = useContext(PostContext);
+
+  
+  return (
+    <div className="button-wrapper">
+      <input type="button" className="button-secondary" value={text} onClick={()=>{handleAnswer(text)}} />
     </div>
   );
 }

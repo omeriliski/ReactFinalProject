@@ -1,9 +1,10 @@
 import "./Posttypes.scss";
 import More from "./img/more.svg"
 import { ActualComments, UsersInteractions,UserComments,NewComment, ShareAFeedback } from "./UsersInteractions";
-import { ButtonPrimary, ButtonSecondary } from "./Buttons";
+import { AnswerButtonSecondary, ButtonPrimary, ButtonSecondary } from "./Buttons";
 import Image from "./img/postbild.jpg"
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { PostContext } from "../App";
 
 
 export function TextPost({post,index}) {
@@ -100,8 +101,24 @@ export function ShortTextPost({post,index}) {
 export function UmfragePost({post,index}) {
     const [feedback, setFeedback] = useState(false);
     const [showComments,setShowComments] = useState(false);
+    const {currentUser, database, savePostData} = useContext(PostContext);
+    
+    
 console.log('post.email :>> ', post.email);
-    return (
+
+function handleAnswer(text){
+  const answerObj={aswer: text,
+  user: currentUser.email}
+  const tempDatabse = [...database]
+tempDatabse[index].answer.push(answerObj);
+savePostData(tempDatabse)
+console.log('database :>> ', database);
+}
+console.log("databaase answer", database[index]);
+// if (database[index].answer.forEach(element => {
+//   console.log(element);
+// }))
+  return (
     <div className="card-div">
       <div className="card-header">
         {" "}
@@ -117,7 +134,7 @@ console.log('post.email :>> ', post.email);
         </div>
         {post.options.map((item) => (
           <div className="txt-title">
-            <p>{item}</p>
+            <AnswerButtonSecondary handleAnswer={handleAnswer} text={item} />
           </div>
         ))}
       </div>

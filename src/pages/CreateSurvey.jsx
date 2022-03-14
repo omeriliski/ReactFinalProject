@@ -7,6 +7,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase";
 import "./CreatePostInput.scss";
 import { ButtonPrimary } from "../posts/Buttons";
+import Plus from "../posts/img/plus.svg";
+
 
 const CreateSurvey = () => {
   const { currentUser, savePostData, database, getPostData } =
@@ -27,7 +29,8 @@ const CreateSurvey = () => {
       comments: [],
       postType: "survey",
       vote: [],
-      email: currentUser.email
+      email: currentUser.email,
+      answer: []
     };
     const newPostData = [newPost, ...database];
     savePostData(newPostData);
@@ -44,23 +47,27 @@ const CreateSurvey = () => {
   if (!currentUser) return <Navigate to="login" />;
   return (
     <div>
-      <div className="form-container">
+      <div className="card-div">
         <form onSubmit={handleSubmit}>
           <textarea
             ref={question}
             rows="4"
             cols="40"
             placeholder="Frage hinzufügen"
+            className="input-title"
           ></textarea>
           {[...Array(optionsCount)].map((item, index) => (
             <input
               onChange={(e) => getOptions(e, index)}
               type="text"
               placeholder="Option hinzufügen"
+              className="input-title"
             />
           ))}
-          <input type="button" value="add" onClick={optionsFunction} />
-          <input type="submit" value="Submit" />
+          <button onClick={optionsFunction} className="plus-img">
+            <img src={Plus} alt="" />
+          </button>
+          <ButtonPrimary />
         </form>
       </div>
     </div>
