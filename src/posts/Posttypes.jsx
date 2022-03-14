@@ -337,7 +337,11 @@ export function BildTextPost({post,index}) {
           {showComments ? (
             post.comments.map((comment) => <ActualComments comment={comment} />)
           ) : (
-            <ActualComments comment={post.comments[post.comments.length - 1]} />
+            <div>
+
+              <br />
+              <ActualComments comment={post.comments[post.comments.length - 1]} />
+            </div>
           )}
         </div>
         {showComments && (
