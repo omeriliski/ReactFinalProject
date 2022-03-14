@@ -11,7 +11,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../firebase";
-import "./CreatePicture.scss";
+import "./CreatePostInput.scss";
 import { ButtonPrimary } from "../posts/Buttons";
 
 const CreateVideo = () => {
@@ -36,8 +36,9 @@ const CreateVideo = () => {
       postText: postText.current.value,
       imgUrl,
       comments: [],
-      postType:"video",
-      vote:[]
+      postType: "video",
+      vote: [],
+      email: currentUser.email
     };
     const newPostData = [newPost,...database]
     //   userSettings: {

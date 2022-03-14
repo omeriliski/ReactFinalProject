@@ -15,7 +15,7 @@ export function TextPost({post,index}) {
         {" "}
         <div className="user-header">
           <div className="user-pic"></div>{" "}
-          <p className="user-name">Lauras Konig</p>
+          <p className="user-name">{post.email}</p>
         </div>
         <img className="more" src={More} />
       </div>
@@ -28,9 +28,19 @@ export function TextPost({post,index}) {
         </div>
       </div>
       {feedback && (
-        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
+        <ShareAFeedback
+          setFeedback={setFeedback}
+          index={index}
+          post={post}
+          feedback={feedback}
+        />
       )}
-      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions
+        post={post}
+        index={index}
+        setFeedback={setFeedback}
+        feedback={feedback}
+      />
       <UserComments
         post={post}
         setShowComments={setShowComments}
@@ -40,13 +50,15 @@ export function TextPost({post,index}) {
         <div className="comments-container">
           {showComments ? (
             post.comments.map((comment) => <ActualComments comment={comment} />)
-            ) : (
-              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          ) : (
+            <ActualComments comment={post.comments[post.comments.length - 1]} />
           )}
         </div>
-        {showComments &&<div className="newcomments-container">
-           <NewComment post={post} index={index} />
-        </div>}
+        {showComments && (
+          <div className="newcomments-container">
+            <NewComment post={post} index={index} />
+          </div>
+        )}
       </div>
     </div>
   );}
@@ -59,7 +71,7 @@ export function ShortTextPost({post,index}) {
         {" "}
         <div className="user-header">
           <div className="user-pic"></div>{" "}
-          <p className="user-name">Laura Konig</p>
+          <p className="user-name">{post.email}</p>
         </div>
         <img className="more" src={More} />
       </div>
@@ -74,7 +86,12 @@ export function ShortTextPost({post,index}) {
       {feedback && (
         <ShareAFeedback setFeedback={setFeedback} feedback={feedback} />
       )}
-      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions
+        post={post}
+        index={index}
+        setFeedback={setFeedback}
+        feedback={feedback}
+      />
       <UserComments />
       <ActualComments />
     </div>
@@ -83,13 +100,14 @@ export function ShortTextPost({post,index}) {
 export function UmfragePost({post,index}) {
     const [feedback, setFeedback] = useState(false);
     const [showComments,setShowComments] = useState(false);
-  return (
+console.log('post.email :>> ', post.email);
+    return (
     <div className="card-div">
       <div className="card-header">
         {" "}
         <div className="user-header">
           <div className="user-pic"></div>{" "}
-          <p className="user-name">Laura Konig</p>
+          <p className="user-name">{post.email}</p>
         </div>
         <img className="more" src={More} />
       </div>
@@ -97,16 +115,26 @@ export function UmfragePost({post,index}) {
         <div className="card-headline">
           <p>{post.question}</p>
         </div>
-        {post.options.map(item=>
+        {post.options.map((item) => (
           <div className="txt-title">
             <p>{item}</p>
-        </div>
-        )}
+          </div>
+        ))}
       </div>
       {feedback && (
-        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
+        <ShareAFeedback
+          setFeedback={setFeedback}
+          index={index}
+          post={post}
+          feedback={feedback}
+        />
       )}
-      <UsersInteractions post={post} setFeedback={setFeedback} feedback={feedback} index={index}/>
+      <UsersInteractions
+        post={post}
+        setFeedback={setFeedback}
+        feedback={feedback}
+        index={index}
+      />
       <UserComments
         post={post}
         setShowComments={setShowComments}
@@ -116,13 +144,15 @@ export function UmfragePost({post,index}) {
         <div className="comments-container">
           {showComments ? (
             post.comments.map((comment) => <ActualComments comment={comment} />)
-            ) : (
-              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          ) : (
+            <ActualComments comment={post.comments[post.comments.length - 1]} />
           )}
         </div>
-        {showComments &&<div className="newcomments-container">
-           <NewComment post={post} index={index} />
-        </div>}
+        {showComments && (
+          <div className="newcomments-container">
+            <NewComment post={post} index={index} />
+          </div>
+        )}
       </div>
     </div>
   );}
@@ -138,7 +168,7 @@ export function BildTextPost({post,index}) {
         {" "}
         <div className="user-header">
           <div className="user-pic"></div>{" "}
-          <p className="user-name">Laura Konig</p>
+          <p className="user-name">{post.email}</p>
         </div>
         <img className="more" src={More} />
       </div>
@@ -154,9 +184,19 @@ export function BildTextPost({post,index}) {
         </div>
       </div>
       {feedback && (
-        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
+        <ShareAFeedback
+          setFeedback={setFeedback}
+          index={index}
+          post={post}
+          feedback={feedback}
+        />
       )}
-      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions
+        post={post}
+        index={index}
+        setFeedback={setFeedback}
+        feedback={feedback}
+      />
       <UserComments
         post={post}
         setShowComments={setShowComments}
@@ -166,13 +206,15 @@ export function BildTextPost({post,index}) {
         <div className="comments-container">
           {showComments ? (
             post.comments.map((comment) => <ActualComments comment={comment} />)
-            ) : (
-              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          ) : (
+            <ActualComments comment={post.comments[post.comments.length - 1]} />
           )}
         </div>
-        {showComments &&<div className="newcomments-container">
-           <NewComment post={post} index={index} />
-        </div>}
+        {showComments && (
+          <div className="newcomments-container">
+            <NewComment post={post} index={index} />
+          </div>
+        )}
       </div>
     </div>
   );}
@@ -188,7 +230,7 @@ export function BildTextPost({post,index}) {
         {" "}
         <div className="user-header">
           <div className="user-pic"></div>{" "}
-          <p className="user-name">Laura Konig</p>
+          <p className="user-name">{post.email}</p>
         </div>
         <img className="more" src={More} />
       </div>
@@ -196,8 +238,8 @@ export function BildTextPost({post,index}) {
         <div className="picture-wrapper">
           {/* <img className="image-src" src={post.imgUrl} /> */}
           <video width="320" height="240" controls>
-            <source src={post.imgUrl} type="video/mp4"/>
-            <source src={post.imgUrl} type="video/ogg"/>
+            <source src={post.imgUrl} type="video/mp4" />
+            <source src={post.imgUrl} type="video/ogg" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -209,9 +251,19 @@ export function BildTextPost({post,index}) {
         </div>
       </div>
       {feedback && (
-        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
+        <ShareAFeedback
+          setFeedback={setFeedback}
+          index={index}
+          post={post}
+          feedback={feedback}
+        />
       )}
-      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions
+        post={post}
+        index={index}
+        setFeedback={setFeedback}
+        feedback={feedback}
+      />
       <UserComments
         post={post}
         setShowComments={setShowComments}
@@ -221,13 +273,15 @@ export function BildTextPost({post,index}) {
         <div className="comments-container">
           {showComments ? (
             post.comments.map((comment) => <ActualComments comment={comment} />)
-            ) : (
-              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          ) : (
+            <ActualComments comment={post.comments[post.comments.length - 1]} />
           )}
         </div>
-        {showComments &&<div className="newcomments-container">
-           <NewComment post={post} index={index} />
-        </div>}
+        {showComments && (
+          <div className="newcomments-container">
+            <NewComment post={post} index={index} />
+          </div>
+        )}
       </div>
     </div>
   );}
@@ -243,7 +297,7 @@ export function BildTextPost({post,index}) {
         {" "}
         <div className="user-header">
           <div className="user-pic"></div>{" "}
-          <p className="user-name">Laura Konig</p>
+          <p className="user-name">{post.email}</p>
         </div>
         <img className="more" src={More} />
       </div>
@@ -260,9 +314,19 @@ export function BildTextPost({post,index}) {
         </div>
       </div>
       {feedback && (
-        <ShareAFeedback setFeedback={setFeedback} index={index} post={post} feedback={feedback} />
+        <ShareAFeedback
+          setFeedback={setFeedback}
+          index={index}
+          post={post}
+          feedback={feedback}
+        />
       )}
-      <UsersInteractions post={post} index={index} setFeedback={setFeedback} feedback={feedback} />
+      <UsersInteractions
+        post={post}
+        index={index}
+        setFeedback={setFeedback}
+        feedback={feedback}
+      />
       <UserComments
         post={post}
         setShowComments={setShowComments}
@@ -272,13 +336,15 @@ export function BildTextPost({post,index}) {
         <div className="comments-container">
           {showComments ? (
             post.comments.map((comment) => <ActualComments comment={comment} />)
-            ) : (
-              <ActualComments comment={post.comments[post.comments.length - 1]} />
+          ) : (
+            <ActualComments comment={post.comments[post.comments.length - 1]} />
           )}
         </div>
-        {showComments &&<div className="newcomments-container">
-           <NewComment post={post} index={index} />
-        </div>}
+        {showComments && (
+          <div className="newcomments-container">
+            <NewComment post={post} index={index} />
+          </div>
+        )}
       </div>
     </div>
   );}

@@ -3,6 +3,7 @@ import { PostContext } from "../App";
 import VotingUp from "./img/votingUp.svg";
 import VotingDown from "./img/votingDown.svg";
 import ArrowDown from "./img/arrowDown.svg";
+import ArrowtsCommen from "./img/arrowComments.svg";
 import "./users-interactions.scss";
 import { SmallButton } from "./Buttons";
 import { ButtonPrimary } from "./Buttons";
@@ -104,10 +105,14 @@ export function NewComment({ post, index }) {
     savePostData(tempDatabase);
   };
   return (
-    <div className="interactions-overlay">
+    <div className="comment-wrapper">
       <form onSubmit={eventHandler}>
-        <input type="comment-text"  ref={commentText} />     
-        <input type="submit" value="Submit" className="button-small"/>
+        <input
+          type="comment-text"
+          className="input-comment"
+          ref={commentText}
+        />
+        <input type="submit" value="↑" className="button-small" />
       </form>
     </div>
   );

@@ -1,24 +1,19 @@
 import { useContext, useRef, useState } from "react";
 import { PostContext } from "../App";
 import { Navigate } from "react-router-dom";
-import {
-  getFirestore,
-} from "firebase/firestore";
+import Plus from "../posts/img/plus.svg";
+import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytesResumable,
-} from "firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase";
-import "./CreatePicture.scss";
+import "./CreatePostInput.scss";
 import { ButtonPrimary } from "../posts/Buttons";
 
 const CreatePicture = () => {
   const [imageURL, setImageURL] = useState();
   const [progress, setProgress] = useState(0);
 
-  const { currentUser, savePostData, database,getPostData } =
+  const { currentUser, savePostData, database, getPostData } =
     useContext(PostContext);
 
   const img = useRef();
@@ -36,15 +31,16 @@ const CreatePicture = () => {
       postText: postText.current.value,
       imgUrl,
       comments: [],
-      postType:"picture",
-      vote:[]
+      postType: "picture",
+      vote: [],
+      email: currentUser.email,
     };
-    const newPostData = [newPost, ...database]
+    const newPostData = [newPost, ...database];
     //   userSettings: {
     //     userId: currentUser.uid,
     //     userEmail: currentUser.email,
     //   },
-    
+
     savePostData(newPostData);
     getPostData();
   };
@@ -93,23 +89,32 @@ const CreatePicture = () => {
   if (!currentUser) return <Navigate to="login" />;
   return (
     <div>
-      <div className="form-container">
+      <div className="card-div">
         <form onSubmit={handleSubmit}>
-          <input
-            ref={img}
-            type="file"
-            accept="image/*"
-            placeholder="Bild hinzufügen"
-          />
-          <img src={imageURL} />
+          <div className="file-input-wrapper">
+            <img src={imageURL} />
+            <input
+              ref={img}
+              type="file"
+              accept="image/*"
+              placeholder="Bild hinzufügen"
+            />
+            <img src={Plus} alt="" />{" "}
+          </div>
 
           <h3>Uploaded {progress} %</h3>
-          <input ref={postTitle} type="text" placeholder="Titel hinzufügen" />
+          <input
+            ref={postTitle}
+            type="text"
+            placeholder="Titel hinzufügen"
+            className="input-title"
+          />
           <textarea
             ref={postText}
             rows="4"
             cols="40"
             placeholder="Text hinzufügen"
+            className="input-title"
           ></textarea>
           <ButtonPrimary text="Teilen" />
         </form>

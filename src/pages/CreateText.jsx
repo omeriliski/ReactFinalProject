@@ -11,7 +11,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../firebase";
-import "./CreatePicture.scss";
+import "./CreatePostInput.scss";
 import { ButtonPrimary } from "../posts/Buttons";
 
 const CreateText = () => {
@@ -35,8 +35,9 @@ const CreateText = () => {
       postTitle: postTitle.current.value,
       postText: postText.current.value,
       comments: [],
-      postType:"text",
-      vote:[]
+      postType: "text",
+      vote: [],
+      email: currentUser.email
     };
     const newPostData = [newPost, ...database]
   

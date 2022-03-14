@@ -10,7 +10,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    @include DarkBg;
+    @include DarkBg;    
     @include DropShadow;
     z-index: 1;
 
