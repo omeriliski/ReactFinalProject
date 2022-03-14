@@ -2,10 +2,10 @@ import "./buttons.scss";
 import { useContext } from "react";
 import { PostContext } from "../App";
 
-export function ButtonPrimary({text}) {
+export function ButtonPrimary({text, handleSubmit}) {
   return (
     <div className="button-wrapper">
-      <input type="submit" className="button-primary" value={text}/>
+      <input type="submit" onClick={handleSubmit} className="button-primary" value={text}/>
     </div>
   );
 }
@@ -41,6 +41,15 @@ export function SmallButton({post, text, setFeedback}){
     </div>
   );
 }
+export function RecordButton({status, startRecording, stopRecording }) {
+  return (
+    <div className="button-RECORD-container">
+      <button className="button-small" onMouseDown={startRecording} onMouseUp={stopRecording}>
+        {status}
+      </button>
+    </div>
+  );
+  }
 
 export function LogRegisterButton({text}){
  

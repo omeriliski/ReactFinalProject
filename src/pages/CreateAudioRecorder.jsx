@@ -7,7 +7,7 @@ import { getAuth } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase";
 import "./CreatePostInput.scss";
-import { ButtonPrimary } from "../posts/Buttons";
+import { ButtonPrimary, RecordButton } from "../posts/Buttons";
 
 const CreateAudio = () => {
   const [audio, setAudio] = useState();
@@ -29,8 +29,8 @@ const CreateAudio = () => {
       audioUrl,
       comments: [],
       postType: "audio",
-      vote:[],
-      email: currentUser.email
+      vote: [],
+      email: currentUser.email,
     };
     const newPostData = [newPost, ...database];
 
@@ -38,10 +38,10 @@ const CreateAudio = () => {
     getPostData();
   };
 
-  const uploadFile = async() => {
+  const uploadFile = async () => {
     console.log(mediaBlobUrl);
-    const audioBlob = await fetch(mediaBlobUrl).then(r => r.blob());
-    console.log("audioBlob==>>",audioBlob);
+    const audioBlob = await fetch(mediaBlobUrl).then((r) => r.blob());
+    console.log("audioBlob==>>", audioBlob);
 
     console.log("file :>> ", audioBlob);
     if (!audioBlob) return;
@@ -65,36 +65,49 @@ const CreateAudio = () => {
     );
   };
 
-  const {
-    status,
-    startRecording,
-    stopRecording,
-    mediaBlobUrl,
-} = useReactMediaRecorder({
-    video: false,
-    audio: true,
-    blobPropertyBag: {
-        type: "audio/wav"
-    }
-});
+  const { status, startRecording, stopRecording, mediaBlobUrl } =
+    useReactMediaRecorder({
+      video: false,
+      audio: true,
+      blobPropertyBag: {
+        type: "audio/wav",
+      },
+    });
   if (!currentUser) return <Navigate to="login" />;
+  function handleSubmit(){
+uploadFile(mediaBlobUrl);
+  }
   return (
-    <div>
-      <h3>Uploaded {progress} %</h3>
-      <input ref={postTitle} type="text" placeholder="Titel hinzufügen" />
-      <textarea
-        ref={postText}
-        rows="4"
-        cols="40"
-        placeholder="Text hinzufügen"
-      ></textarea>
-          <div>
-            <p>{status}</p>
-            <button onClick={startRecording}>Start Recording</button>
-            <button onClick={stopRecording}>Stop Recording</button>
-            <audio src={mediaBlobUrl} controls />
-            <button onClick={() => uploadFile(mediaBlobUrl)}>Send Post</button>
-          </div>
+    <div className="card-div ">
+      <div className="form-css">
+        <h3>Uploaded {progress} %</h3>
+        <input
+          ref={postTitle}
+          type="text"
+          placeholder="Titel hinzufügen"
+          className="file-input-wrapper2"
+        />
+        <textarea
+          ref={postText}
+          rows="4"
+          cols="40"
+          placeholder="Text hinzufügen"
+          className="file-input-wrapper2"
+        ></textarea>
+        <div className="audio-container">
+          <RecordButton
+            status={status}
+            startRecording={startRecording}
+            stopRecording={stopRecording}
+          >
+            {" "}
+            Start{" "}
+          </RecordButton>
+          {/* <button onClick={stopRecording}>Stop </button> */}
+          <audio src={mediaBlobUrl} controls />
+          <ButtonPrimary text="Post" handleSubmit={handleSubmit} />
+        </div>
+      </div>
     </div>
   );
 };
