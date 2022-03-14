@@ -1,0 +1,43 @@
+@import "../mixins.scss";
+
+
+.form-container {
+    margin: 3rem;
+    display: flex;
+    justify-content: center;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+}
+
+.input-title {
+    @include InputField;
+    resize: none;
+
+}
+
+.txt-title {
+    @include PostTitle;
+
+}
+
+.file-input-wrapper {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include InputField;
+    img{
+        position: absolute;
+            cursor: pointer;
+
+
+    }
+    input{
+    opacity: 0;
+    z-index: 1;
+}}

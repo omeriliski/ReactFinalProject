@@ -12,11 +12,14 @@
     box-shadow: -3px -3px 8px 0px rgba(168, 170, 201, 0.5);
     box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.35);
     box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.35);
+
     .card-header {
         display: flex;
         flex-direction: row;
-        align-items:flex-start;
-        justify-content:left;
+        align-items: center;
+        // justify-content:left;
+        justify-content: space-between;
+
         width: 100%;
         height: 34px;
         left: 20px;
@@ -25,55 +28,84 @@
         @include PostUserName;
         color: white;
         margin-bottom: 30px;
-        .user-header{
+
+        .user-header {
+
             display: flex;
             flex-direction: row;
             align-items: center;
             height: auto;
-            width: auto;
-            .user-pic{
+            width: 100%;
+
+            .user-name {
+                display: flex;
+                justify-self: flex-start
+            }
+
+            .picture-wrapper {
+                @include BorderRadius16px;
+            }
+
+            .user-pic {
                 @include YellowBg;
                 width: 24px;
                 height: 24px;
                 border-radius: 24px;
                 margin-right: 16px;
-            }   
+            }
         }
-        .more{
+
+        .more {
             justify-self: end;
             display: flex;
-        
+
         }
     }
-    .post-text-content{
+
+    .post-text-content {
         @include TextLeft;
         @include WhiteTxt;
-        
-        .txt-title{
+
+        .txt-title {
             @include PostTitle;
         }
-        .image-src{
+
+        .image-src {
             width: 100%;
             @include BorderRadius16px;
-            
+
         }
     }
-    .comments-container{
+
+    .comments-container {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: flex-start;
+        justify-content: left;
+        width: 100%;
+                        overflow-y: scroll;
+
+                        max-height: 256px;
+
         // margin-bottom: 2rem;
     }
-    .newcomments-container{
-        height: 3rem;
-                align-items: flex-start;
-                justify-content: flex-start;
+
+    .newcomments-container {
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: left;
+        width: 100%;
+        padding-bottom: 56px;
+.user-name{
+    @include Margin16;
+}
 
     }
 }
 
-.card-headline{
+.card-headline {
     font-family: 'Manrope';
     font-style: normal;
     font-weight: normal;
@@ -83,7 +115,8 @@
     @include Margin16;
     @include TextLeft;
 }
-.card-text{
+
+.card-text {
     font-family: 'Manrope';
     font-style: normal;
     font-weight: normal;

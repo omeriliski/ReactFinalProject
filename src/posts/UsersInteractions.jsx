@@ -17,14 +17,40 @@ const userName = "Johanna";
 const userComment =
   "Eos tempora ipsum iusto eius maxime perspiciatis voluptas magnam quidem accusamus repudiandae!.";
 
-export function UsersInteractions({post, feedback, setFeedback}) {
+export function UsersInteractions({post, feedback, setFeedback,index}) {
+  const defLike = post.vote.filter(item=>item.voted=="like").length;
+  const defDislike = post.vote.filter(item=>item.voted=="dislike").length;
 
+  const {currentUser,database,savePostData} = useContext(PostContext);
+  const [like,setLike] = useState(defLike);
+  const [dislike,setDislike] = useState(defDislike);
+
+  const VotingUpFunc=(voted)=>{
+    const voteObj={
+      votedBy:currentUser.email,
+      voted
+    }
+    //if exist give indexnumber
+    console.log('object :>> ', database[index].vote.length); 
+    const findindex = database[index].vote.findIndex(item=>item.votedBy==currentUser.email);
+    // if voted doesn't exist
+    if(findindex==-1)  database[index].vote.push(voteObj)
+    else database[index].vote[findindex]=voteObj;
+
+    setLike(database[index].vote.filter(item=>item.voted=="like").length);
+    setDislike(database[index]?.vote?.filter(item=>item.voted=="dislike").length)
+    savePostData(database);
+  }
+  // const getVoteCount=(voted)=>{
+  //   return post.vote.filter(item => item.voted==voted).length
+  // }
   return (
     <div className="interactions-container">
       <div className="voting">
-        <img className="voting-up" src={VotingUp} />{" "}
-        <a className="typo-extras">{votingNumber}</a>
-        <img className="voting-up" src={VotingDown} />{" "}
+        <img onClick={()=>VotingUpFunc("like")} className="voting-up" src={VotingUp} />{" "}
+        <a className="typo-extras">{like}</a>
+        <img  onClick={()=>VotingUpFunc("dislike")} className="voting-up" src={VotingDown} />{" "}
+        <a className="typo-extras">{dislike}</a>
       </div>
       <div className="feedback">
  <SmallButton text="Feedback" feedback={feedback} post={post} setFeedback={setFeedback}/>
@@ -86,7 +112,7 @@ export function NewComment({ post, index }) {
           className="input-comment"
           ref={commentText}
         />
-        <input type="submit" value="Komentieren" className="button-small" />
+        <input type="submit" value="↑" className="button-small" />
       </form>
     </div>
   );

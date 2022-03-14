@@ -33,22 +33,20 @@ export function SmallButton({post, text, setFeedback}){
   function feedbackClick(){
   setFeedback(true)
 }
-console.log(post?.feedback);
   return (
     <div className="button-container">
       <button className="button-small" onClick={feedbackClick}>
-        {post? post.feedback : "Feedback"}
+        {post?.hasOwnProperty("feedback") ? post.feedback : "Feedback"}
       </button>
     </div>
   );
 }
-export function ButtonMenu({text}){
 
+export function LogRegisterButton({text}){
+ 
   return (
     <div className="button-container">
-      <button className="button-small">
-        {text}
-      </button>
+      <button className="button-small">{text}</button>
     </div>
   );
 }

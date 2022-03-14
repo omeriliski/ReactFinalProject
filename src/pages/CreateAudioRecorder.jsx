@@ -6,7 +6,7 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase";
-import "./CreatePicture.scss";
+import "./CreatePostInput.scss";
 import { ButtonPrimary } from "../posts/Buttons";
 
 const CreateAudio = () => {
@@ -28,9 +28,9 @@ const CreateAudio = () => {
       postText: postText.current.value,
       audioUrl,
       comments: [],
-      like: 0,
-      dislike: 0,
       postType: "audio",
+      vote:[],
+      email: currentUser.email
     };
     const newPostData = [newPost, ...database];
 
@@ -39,6 +39,7 @@ const CreateAudio = () => {
   };
 
   const uploadFile = async() => {
+    console.log(mediaBlobUrl);
     const audioBlob = await fetch(mediaBlobUrl).then(r => r.blob());
     console.log("audioBlob==>>",audioBlob);
 
