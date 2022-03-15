@@ -8,17 +8,19 @@ import { PostContext } from "../App";
 import DeletePost from "../components/DeletePost";
 import SurveyResult from "../components/SurveyResult";
 
-
 export function TextPost({post,index}) {
   const [feedback, setFeedback] = useState(false)
   const [showComments,setShowComments] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const {currentUser} = useContext(PostContext)
   
   const moreClick=()=>{
-    setShowDelete(!showDelete);
-    setTimeout(() => {
-      setShowDelete(false)
-    }, 3000);
+    if(currentUser.email==post.email){
+      setShowDelete(!showDelete);
+      setTimeout(() => {
+        setShowDelete(false)
+      }, 3000);
+    }
   }
   return (
     <div className="card-div">
@@ -74,14 +76,18 @@ export function TextPost({post,index}) {
       </div>
     </div>
   );}
+  
 export function ShortTextPost({post,index}) {
     const [feedback, setFeedback] = useState(false);
     const [showDelete, setShowDelete] = useState(false);
+    const {currentUser} = useContext(PostContext)
     const moreClick=()=>{
-      setShowDelete(!showDelete);
-      setTimeout(() => {
-        setShowDelete(false)
-      }, 3000);
+      if(currentUser.email==post.email){
+        setShowDelete(!showDelete);
+        setTimeout(() => {
+          setShowDelete(false)
+        }, 3000);
+      }
     }
   return (
     <div className="card-div">
@@ -136,10 +142,12 @@ console.log('database :>> ', database);
 //   console.log(element);
 // }))
 const moreClick=()=>{
-  setShowDelete(!showDelete);
-  setTimeout(() => {
-    setShowDelete(false)
-  }, 3000);
+  if(currentUser.email==post.email){
+    setShowDelete(!showDelete);
+    setTimeout(() => {
+      setShowDelete(false)
+    }, 3000);
+  }
 }
 const isAnswered = ()=>{
   if(currentUser){
@@ -213,11 +221,15 @@ export function BildTextPost({post,index}) {
   const [feedback, setFeedback] = useState(false);
   const [showComments,setShowComments] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const {currentUser} = useContext(PostContext)
+
   const moreClick=()=>{
-    setShowDelete(!showDelete);
-    setTimeout(() => {
-      setShowDelete(false)
-    }, 3000);
+    if(currentUser.email==post.email){
+      setShowDelete(!showDelete);
+      setTimeout(() => {
+        setShowDelete(false)
+      }, 3000);
+    }
   }
   return (
     <div className="card-div">
@@ -282,11 +294,15 @@ export function BildTextPost({post,index}) {
     const [feedback, setFeedback] = useState(false);
     const [showComments,setShowComments] = useState(false);
     const [showDelete, setShowDelete] = useState(false);
+    const {currentUser} = useContext(PostContext)
+
     const moreClick=()=>{
-      setShowDelete(!showDelete);
-      setTimeout(() => {
-        setShowDelete(false)
-      }, 3000);
+      if(currentUser.email==post.email){
+        setShowDelete(!showDelete);
+        setTimeout(() => {
+          setShowDelete(false)
+        }, 3000);
+      }
     }
   return (
     <div className="card-div">
@@ -351,16 +367,19 @@ export function BildTextPost({post,index}) {
     </div>
   );}
 
-
   export function AudioPost({post,index}) {
     const [feedback, setFeedback] = useState(false);
     const [showComments,setShowComments] = useState(false);
     const [showDelete, setShowDelete] = useState(false);
+    const {currentUser} = useContext(PostContext)
+
     const moreClick=()=>{
-      setShowDelete(!showDelete);
-      setTimeout(() => {
-        setShowDelete(false)
-      }, 3000);
+      if(currentUser.email==post.email){
+        setShowDelete(!showDelete);
+        setTimeout(() => {
+          setShowDelete(false)
+        }, 3000);
+      }
     }
     return (
     <div className="card-div">
