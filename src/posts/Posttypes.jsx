@@ -124,7 +124,7 @@ export function UmfragePost({post,index}) {
 console.log('post.email :>> ', post.email);
 
 function handleAnswer(text){
-  const answerObj={aswer: text,
+  const answerObj={answer: text,
   user: currentUser.email}
   const tempDatabase = [...database]
 tempDatabase[index].answer.push(answerObj);
