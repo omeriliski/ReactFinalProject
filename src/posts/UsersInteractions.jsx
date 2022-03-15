@@ -99,7 +99,7 @@ export function NewComment({ post, index }) {
       userComment: commentText.current.value,
       datum: new Date().toDateString(),
     };
-
+    commentText.current.value="";
     const tempDatabase = [...database];
     tempDatabase[index].comments.push(comment);
     savePostData(tempDatabase);
