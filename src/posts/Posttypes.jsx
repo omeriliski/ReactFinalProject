@@ -5,11 +5,20 @@ import { AnswerButtonSecondary, ButtonPrimary, ButtonSecondary } from "./Buttons
 import Image from "./img/postbild.jpg"
 import { useContext, useState } from "react";
 import { PostContext } from "../App";
+import DeletePost from "../components/DeletePost";
 
 
 export function TextPost({post,index}) {
   const [feedback, setFeedback] = useState(false)
   const [showComments,setShowComments] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  
+  const moreClick=()=>{
+    setShowDelete(!showDelete);
+    setTimeout(() => {
+      setShowDelete(false)
+    }, 3000);
+  }
   return (
     <div className="card-div">
       <div className="card-header">
@@ -18,7 +27,8 @@ export function TextPost({post,index}) {
           <div className="user-pic"></div>{" "}
           <p className="user-name">{post.email}</p>
         </div>
-        <img className="more" src={More} />
+        {showDelete && <DeletePost post={post}/>}
+        <img onClick={moreClick} className="more" src={More} />
       </div>
       <div className="post-text-content">
         <div className="txt-title">
@@ -65,7 +75,13 @@ export function TextPost({post,index}) {
   );}
 export function ShortTextPost({post,index}) {
     const [feedback, setFeedback] = useState(false);
-
+    const [showDelete, setShowDelete] = useState(false);
+    const moreClick=()=>{
+      setShowDelete(!showDelete);
+      setTimeout(() => {
+        setShowDelete(false)
+      }, 3000);
+    }
   return (
     <div className="card-div">
       <div className="card-header">
@@ -74,7 +90,8 @@ export function ShortTextPost({post,index}) {
           <div className="user-pic"></div>{" "}
           <p className="user-name">{post.email}</p>
         </div>
-        <img className="more" src={More} />
+        {showDelete && <DeletePost post={post}/>}
+        <img onClick={moreClick} className="more" src={More} />
       </div>
       <div className="post-text-content">
         <div className="card-headline">
@@ -101,23 +118,29 @@ export function ShortTextPost({post,index}) {
 export function UmfragePost({post,index}) {
     const [feedback, setFeedback] = useState(false);
     const [showComments,setShowComments] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
     const {currentUser, database, savePostData} = useContext(PostContext);
-    
     
 console.log('post.email :>> ', post.email);
 
 function handleAnswer(text){
   const answerObj={aswer: text,
   user: currentUser.email}
-  const tempDatabse = [...database]
-tempDatabse[index].answer.push(answerObj);
-savePostData(tempDatabse)
+  const tempDatabase = [...database]
+tempDatabase[index].answer.push(answerObj);
+savePostData(tempDatabase)
 console.log('database :>> ', database);
 }
-console.log("databaase answer", database[index]);
 // if (database[index].answer.forEach(element => {
 //   console.log(element);
 // }))
+const moreClick=()=>{
+  setShowDelete(!showDelete);
+  setTimeout(() => {
+    setShowDelete(false)
+  }, 3000);
+}
+
   return (
     <div className="card-div">
       <div className="card-header">
@@ -126,7 +149,8 @@ console.log("databaase answer", database[index]);
           <div className="user-pic"></div>{" "}
           <p className="user-name">{post.email}</p>
         </div>
-        <img className="more" src={More} />
+        {showDelete && <DeletePost post={post}/>}
+        <img onClick={moreClick} className="more" src={More} />
       </div>
       <div className="post-text-content">
         <div className="card-headline">
@@ -176,9 +200,15 @@ console.log("databaase answer", database[index]);
 
 
 export function BildTextPost({post,index}) {
-    const [feedback, setFeedback] = useState(false);
-
+  const [feedback, setFeedback] = useState(false);
   const [showComments,setShowComments] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const moreClick=()=>{
+    setShowDelete(!showDelete);
+    setTimeout(() => {
+      setShowDelete(false)
+    }, 3000);
+  }
   return (
     <div className="card-div">
       <div className="card-header">
@@ -187,7 +217,8 @@ export function BildTextPost({post,index}) {
           <div className="user-pic"></div>{" "}
           <p className="user-name">{post.email}</p>
         </div>
-        <img className="more" src={More} />
+        {showDelete && <DeletePost post={post}/>}
+        <img onClick={moreClick} className="more" src={More} />
       </div>
       <div className="post-text-content">
         <div className="picture-wrapper">
@@ -239,8 +270,14 @@ export function BildTextPost({post,index}) {
 
   export function VideoPost({post,index}) {
     const [feedback, setFeedback] = useState(false);
-
-  const [showComments,setShowComments] = useState(false);
+    const [showComments,setShowComments] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
+    const moreClick=()=>{
+      setShowDelete(!showDelete);
+      setTimeout(() => {
+        setShowDelete(false)
+      }, 3000);
+    }
   return (
     <div className="card-div">
       <div className="card-header">
@@ -249,7 +286,8 @@ export function BildTextPost({post,index}) {
           <div className="user-pic"></div>{" "}
           <p className="user-name">{post.email}</p>
         </div>
-        <img className="more" src={More} />
+        {showDelete && <DeletePost post={post}/>}
+        <img onClick={moreClick} className="more" src={More} />
       </div>
       <div className="post-text-content">
         <div className="picture-wrapper">
@@ -306,9 +344,15 @@ export function BildTextPost({post,index}) {
 
   export function AudioPost({post,index}) {
     const [feedback, setFeedback] = useState(false);
-
-  const [showComments,setShowComments] = useState(false);
-  return (
+    const [showComments,setShowComments] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
+    const moreClick=()=>{
+      setShowDelete(!showDelete);
+      setTimeout(() => {
+        setShowDelete(false)
+      }, 3000);
+    }
+    return (
     <div className="card-div">
       <div className="card-header">
         {" "}
@@ -316,7 +360,8 @@ export function BildTextPost({post,index}) {
           <div className="user-pic"></div>{" "}
           <p className="user-name">{post.email}</p>
         </div>
-        <img className="more" src={More} />
+        {showDelete && <DeletePost post={post}/>}
+        <img onClick={moreClick} className="more" src={More} />
       </div>
       <div className="post-text-content">
         <div className="picture-wrapper">
@@ -354,7 +399,11 @@ export function BildTextPost({post,index}) {
           {showComments ? (
             post.comments.map((comment) => <ActualComments comment={comment} />)
           ) : (
-            <ActualComments comment={post.comments[post.comments.length - 1]} />
+            <div>
+
+              <br />
+              <ActualComments comment={post.comments[post.comments.length - 1]} />
+            </div>
           )}
         </div>
         {showComments && (
