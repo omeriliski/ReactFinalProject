@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { PostContext } from "../App";
+import { MoreButton } from "../posts/Buttons";
 import "./DeletePost.scss";
 const DeletePost=({post})=>{
     const {database,savePostData} = useContext(PostContext);
@@ -11,7 +12,7 @@ const DeletePost=({post})=>{
       }
     return(
         <div className="delete-container">
-            <a onClick={deletePost}>Delete Post</a>
+            <MoreButton text="Delete Post" deletePost={deletePost}/> 
         </div>
     )
 }
