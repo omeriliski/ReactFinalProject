@@ -4,13 +4,6 @@ import { Navigate } from "react-router-dom";
 import {
   getFirestore,
 } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytesResumable,
-} from "firebase/storage";
-import { storage } from "../firebase";
 import "./CreatePostInput.scss";
 import { ButtonPrimary } from "../posts/Buttons";
 
@@ -47,22 +40,20 @@ const CreateText = () => {
 
   if (!currentUser) return <Navigate to="login" />;
   return (
-    <div className="card-div">
-      <div className="form-css">
+    <div>
+      <div className="card-div">
         <form onSubmit={handleSubmit}>
-          <input
-            ref={postTitle}
-            type="text"
-            placeholder="Titel hinzufügen"
-            className="input-title"
-          />
+          {/* <div className="file-input-wrapper"> */}
+
+          <input ref={postTitle} className="input-title" type="text" placeholder="Titel hinzufügen" />
           <textarea
             ref={postText}
             rows="4"
             cols="40"
             placeholder="Text hinzufügen"
             className="input-title"
-          ></textarea>
+            ></textarea>
+            {/* </div> */}
           <ButtonPrimary text="Teilen" />
         </form>
       </div>

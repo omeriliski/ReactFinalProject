@@ -1,0 +1,11 @@
+@import "../mixins.scss";
+.delete-container{
+    width: 90px;
+    text-align: center;    
+    @include CommentsButtons;
+    border: 1px solid white;
+    padding: .5rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    border-radius: 20px;
+}
