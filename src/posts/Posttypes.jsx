@@ -142,9 +142,11 @@ const moreClick=()=>{
   }, 3000);
 }
 const isAnswered = ()=>{
- const indexAnswer = database[index].answer.findIndex(item=>item.user==currentUser.email);
- console.log('index :>> ', indexAnswer);
- return indexAnswer
+  if(currentUser){
+    const indexAnswer = database[index].answer.findIndex(item=>item.user==currentUser.email);
+    console.log('index :>> ', indexAnswer);
+    return indexAnswer
+  }
 }
 
   return (
