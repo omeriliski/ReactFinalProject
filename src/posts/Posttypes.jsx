@@ -6,6 +6,7 @@ import Image from "./img/postbild.jpg"
 import { useContext, useState } from "react";
 import { PostContext } from "../App";
 import DeletePost from "../components/DeletePost";
+import SurveyResult from "../components/SurveyResult";
 
 
 export function TextPost({post,index}) {
@@ -124,7 +125,7 @@ export function UmfragePost({post,index}) {
 console.log('post.email :>> ', post.email);
 
 function handleAnswer(text){
-  const answerObj={aswer: text,
+  const answerObj={answer: text,
   user: currentUser.email}
   const tempDatabase = [...database]
 tempDatabase[index].answer.push(answerObj);
@@ -139,6 +140,11 @@ const moreClick=()=>{
   setTimeout(() => {
     setShowDelete(false)
   }, 3000);
+}
+const isAnswered = ()=>{
+ const indexAnswer = database[index].answer.findIndex(item=>item.user==currentUser.email);
+ console.log('index :>> ', indexAnswer);
+ return indexAnswer
 }
 
   return (
@@ -156,11 +162,13 @@ const moreClick=()=>{
         <div className="card-headline">
           <p>{post.question}</p>
         </div>
-        {post.options.map((item) => (
+
+        {isAnswered() == -1 ?
+        post.options.map((item) => (
           <div className="txt-title">
             <AnswerButtonSecondary handleAnswer={handleAnswer} text={item} />
           </div>
-        ))}
+        )):<SurveyResult post={post}/>}
       </div>
       {feedback && (
         <ShareAFeedback
