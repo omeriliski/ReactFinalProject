@@ -47,15 +47,21 @@ const CreateText = () => {
 
   if (!currentUser) return <Navigate to="login" />;
   return (
-    <div>
-      <div className="form-container">
+    <div className="card-div">
+      <div className="form-css">
         <form onSubmit={handleSubmit}>
-          <input ref={postTitle} type="text" placeholder="Titel hinzufügen" />
+          <input
+            ref={postTitle}
+            type="text"
+            placeholder="Titel hinzufügen"
+            className="input-title"
+          />
           <textarea
             ref={postText}
             rows="4"
             cols="40"
             placeholder="Text hinzufügen"
+            className="input-title"
           ></textarea>
           <ButtonPrimary text="Teilen" />
         </form>
