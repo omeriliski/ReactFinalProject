@@ -65,6 +65,7 @@
     .post-text-content {
         @include TextLeft;
         @include WhiteTxt;
+        width: 100%;
 
         .txt-title {
             @include PostTitle;
