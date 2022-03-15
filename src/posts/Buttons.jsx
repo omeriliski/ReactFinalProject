@@ -60,6 +60,16 @@ export function RecordButton({status, startRecording, stopRecording }) {
     </div>
   );
   }
+export function MoreButton({text, deletePost }) {
+  
+  return (
+    <div className="delete-container">
+      <button className="button-small" onClick={deletePost}>
+        {text}
+      </button>
+    </div>
+  );
+  }
 
 export function LogRegisterButton({text}){
  

@@ -34,6 +34,7 @@ const CreateSurvey = () => {
     };
     const newPostData = [newPost, ...database];
     savePostData(newPostData);
+    console.log("saved");
     getPostData();
   };
   const optionsFunction = () => setOptionsCount(optionsCount + 1);
@@ -64,10 +65,10 @@ const CreateSurvey = () => {
               className="input-title"
             />
           ))}
-          <button onClick={optionsFunction} className="plus-img">
+          <div onClick={optionsFunction} className="plus-img">
             <img src={Plus} alt="" />
-          </button>
-          <ButtonPrimary />
+          </div>
+          <ButtonPrimary/>
         </form>
       </div>
     </div>
