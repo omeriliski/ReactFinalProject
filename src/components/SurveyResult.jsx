@@ -8,7 +8,7 @@ const SurveyResult=({post})=>{
         {post.options.map(
           (element) => (
             <div className="answer-wrapper">
-              <div className="answer-bar" style={{minWidth:`${post.answer.filter((item) => item.answer == element).length/post.answer.length*90}%`,  backgroundColor: "yellow"} }>
+              <div className="answer-bar" style={{minWidth:`${post.answer.filter((item) => item.answer == element).length/post.answer.length*90}%`,  backgroundColor: "yellow", color:"black", border:"1px black solid"} }>
                 {element}:
                 {post.answer.filter((item) => item.answer == element).length}
               </div>
