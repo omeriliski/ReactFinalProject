@@ -91,10 +91,40 @@
     @include Margin16;
     padding-bottom: 16px;
     margin-bottom: 0px;
-    width: auto;
+    width: 339px;
     position: absolute;
     bottom: 10px;
 
+    .answer-wrapper{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        justify-content: space-around;
+@include Margin8;
+        width: 339px;
+        height: 24px;
+        background: #2E2E2E;
+        /* DM_Inner_SmallElements */
+
+        box-shadow: inset -1px -1px 2px rgba(100, 100, 100, 0.4),
+        inset 1px 1px 2px rgba(0, 0, 0, 0.6);
+        border-radius: 16px;
+        .answer-bar{
+            @include BorderWhiteR16;
+            position: absolute;
+            @include Padding16px;
+        }
+    }
+}
+.p-16{
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.w-100{
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
 }
 
 .comment-wrapper {
