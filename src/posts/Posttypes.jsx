@@ -178,7 +178,7 @@ const isAnswered = ()=>{
           <div className="txt-title">
             <AnswerButtonSecondary handleAnswer={handleAnswer} text={item} />
           </div>
-        )):<SurveyResult post={post}/>}
+        )):<SurveyResult post={post} currentUser={currentUser}/>}
       </div>
       {feedback && (
         <ShareAFeedback

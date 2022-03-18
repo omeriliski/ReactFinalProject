@@ -1,5 +1,20 @@
-const SurveyResult=({post})=>{
-    
+import {useCallback} from "react";
+import { PostContext } from "../App";
+
+const SurveyResult=({post,currentUser})=>{
+  const giveStyle=(element)=>{
+    console.log('element :>> ', element);
+    const found = post.answer.find(item=>item.user==currentUser.email) 
+    console.log('found :>> ', found);
+    const styleObj={
+      minWidth:`${post.answer.filter((item) => item.answer == element).length/post.answer.length*90}%`, 
+    }
+    if(element==found.answer){
+      styleObj.backgroundColor="yellow"
+      styleObj.color="black"
+    }
+    return styleObj;
+  }
     return (
       <div className="interactions-overlay w-100 p-16">
         {/* {post.answer.map(item=>console.log('item :>> ', item))}
@@ -8,7 +23,7 @@ const SurveyResult=({post})=>{
         {post.options.map(
           (element) => (
             <div className="answer-wrapper">
-              <div className="answer-bar" style={{minWidth:`${post.answer.filter((item) => item.answer == element).length/post.answer.length*90}%`,  backgroundColor: "yellow"} }>
+              <div className="answer-bar" style={giveStyle(element)}>
                 {element}:
                 {post.answer.filter((item) => item.answer == element).length}
               </div>
