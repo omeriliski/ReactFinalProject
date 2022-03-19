@@ -90,10 +90,10 @@
     @include Padding16px;
     @include Margin16;
     padding-bottom: 16px;
-    margin-bottom: 0px;
-    width: 339px;
-    position: absolute;
-    bottom: 10px;
+    margin-bottom: 10px;
+    width: 303px;
+    // position: absolute;
+    // bottom: 10px;
 
     .answer-wrapper{
         position: relative;
@@ -101,8 +101,8 @@
         flex-direction: column;
         align-items:flex-start;
         justify-content: space-around;
-@include Margin8;
-        width: 339px;
+        @include Margin8;
+        width: 309px;
         height: 24px;
         background: #2E2E2E;
         /* DM_Inner_SmallElements */
