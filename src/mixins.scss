@@ -157,6 +157,9 @@ padding-inline: 8px;
 @mixin DropShadow{
   filter:  drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.35)) drop-shadow(-3px -3px 8px rgba(100, 100, 100, 0.4));
 }
+@mixin No-Filter {
+  filter: none;    
+}
 
 //BORDERS
 @mixin BorderRadius16px {

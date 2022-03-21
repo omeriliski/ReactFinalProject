@@ -52,7 +52,7 @@ const isAnswered = ()=>{
       </div>
       <div className="post-text-content">
         <div className="card-headline">
-          <p>{post.question}</p>
+          <p></p>
         </div>
 
         {isAnswered() == -1 ?
@@ -60,7 +60,7 @@ const isAnswered = ()=>{
           <div className="txt-title">
             <AnswerButtonSecondary handleAnswer={handleAnswer} text={item} />
           </div>
-        )):<SurveyResult post={post} currentUser={currentUser}/>
+        )):<SurveyResult  post={post} currentUser={currentUser}/>
         
         }
       </div>

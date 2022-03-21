@@ -2,14 +2,12 @@
 
 
 .header-wrapper {
-    width: 100%;
     // position: absolute;
     //Instead of absolute i did sticky, is it better?(Ömer)
     position: fixed;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     @include DarkBg;    
     @include DropShadow;
     z-index: 1;
@@ -19,11 +17,26 @@
     // right: 0%;
     // top: 0%;
     top:0px;
-    bottom: 22.53%;
     height: 56px;
     width: 100%;
-    @include DropShadow;
-    @include DarkBg;
+
+    .fixed-post-width{
+        width: 371px;
+        height: 100%;
+            // position: absolute;
+            //Instead of absolute i did sticky, is it better?(Ömer)
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            z-index: 1;
+
+            // z-index: 1;
+            // right: 0%;
+            // top: 0%;
+
+    }
 
     img {
         @include Padding16px;
