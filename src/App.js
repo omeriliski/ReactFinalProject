@@ -83,7 +83,7 @@ function App() {
         getPostData,
       }}
     >
-<div className="App">
+    <div className="App">
         <Navbar />
         <Routes>
           <Route index element={<Home />} />
