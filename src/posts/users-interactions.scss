@@ -52,12 +52,13 @@
 }
 
 .actual-comment-container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: left;
-        width: 100%;
-        margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    width: 100%;
+    margin-bottom: 1rem;
+
     .user-name {
         @include typo-extras-semibold;
         @include WhiteTxt;
@@ -79,8 +80,10 @@
 
 
 .interactions-overlay {
+    z-index: 1;
     transition-duration: 4s;
     display: flex;
+
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -91,40 +94,59 @@
     @include Margin16;
     padding-bottom: 16px;
     margin-bottom: 10px;
-    width: 303px;
-    // position: absolute;
-    // bottom: 10px;
+    width: 335px;
+    position: absolute;
+    bottom: -10px;
+}
+.survey-overlay {
 
-    .answer-wrapper{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    @include DarkBg;
+    @include DropShadow;
+    @include BorderRadius16px;
+    @include Padding16px;
+margin-bottom: 32px;}
+
+    .answer-wrapper {
         position: relative;
         display: flex;
         flex-direction: column;
-        align-items:flex-start;
+        align-items: flex-start;
         justify-content: space-around;
-        @include Margin8;
-        width: 309px;
+        width: 335px;
         height: 24px;
         background: #2E2E2E;
         /* DM_Inner_SmallElements */
 
         box-shadow: inset -1px -1px 2px rgba(100, 100, 100, 0.4),
-        inset 1px 1px 2px rgba(0, 0, 0, 0.6);
+            inset 1px 1px 2px rgba(0, 0, 0, 0.6);
         border-radius: 16px;
-        .answer-bar{
+
+        .answer-bar {
             @include BorderWhiteR16;
             position: absolute;
             @include Padding16px;
         }
     }
-}
-.p-16{
+
+
+.p-16 {
     padding-top: 16px;
     padding-bottom: 16px;
 }
-.w-100{
+
+.w-100 {
     left: 0px;
     right: 0px;
     bottom: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 }
 
 .comment-wrapper {
@@ -138,7 +160,7 @@
     left: 16px;
     align-items: flex-start;
     justify-content: left;
-    
+
     form {
         display: grid;
         grid-template-columns: 4fr 1fr;
@@ -173,7 +195,11 @@
             }
         }
 
-   
+
 
     }
+}
+
+.no-drop-shadow {
+    @include No-Filter;
 }

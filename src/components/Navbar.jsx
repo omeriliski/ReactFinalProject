@@ -22,6 +22,7 @@ const Navbar = () => {
 
   return (
     <div className="header-wrapper">
+      <div className="fixed-post-width">
       <NavLink to="/" className="logo">
         <img src={Logo} />
       </NavLink>
@@ -51,6 +52,7 @@ const Navbar = () => {
           <LogRegisterButton text="Registrieren" />
         </NavLink>
       ) : null} */}
+      </div>
     </div>
   );
 };

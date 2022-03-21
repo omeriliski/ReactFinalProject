@@ -20,10 +20,10 @@ const SurveyResult = ({ post, currentUser }) => {
     return styleObj;
   };
   return (
-    <div className="interactions-overlay w-100 p-16 static">
+    <div className="survey-overlay no-drop-shadow">
       {/* {post.answer.map(item=>console.log('item :>> ', item))}
             {post.answer.filter(item=>item.answer && currentUser.email)} */}
-      <div className="txt-title">Survey results</div>
+      <div className="txt-title">{post.question}</div>
       {post.options.map(
         (element) => (
           <div className="mb-8">
