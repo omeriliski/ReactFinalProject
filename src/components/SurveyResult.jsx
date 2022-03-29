@@ -4,20 +4,22 @@ import { PostContext } from "../App";
 const SurveyResult = ({ post, currentUser }) => {
   const giveStyle = (element) => {
     console.log("element :>> ", element);
-    const found = post.answer.find((item) => item.user == currentUser.email);
-    console.log("found :>> ", found);
-    const styleObj = {
-      minWidth: `${
-        (post.answer.filter((item) => item.answer == element).length /
+    if(currentUser) {
+      const found = post.answer.find((item) => item.user == currentUser.email);
+      console.log("found :>> ", found);
+      const styleObj = {
+        minWidth: `${
+          (post.answer.filter((item) => item.answer == element).length /
           post.answer.length) *
-        90
-      }%`,
-    };
-    if (element == found.answer) {
+          90
+        }%`,
+      };
+      if (element == found.answer) {
       styleObj.backgroundColor = "yellow";
       styleObj.color = "black";
     }
     return styleObj;
+    }
   };
   return (
     <div className="survey-overlay no-drop-shadow">
