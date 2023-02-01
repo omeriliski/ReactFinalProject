@@ -51,7 +51,6 @@ function App() {
   //   setDatabase(arr);
   // };
 
-  
   // it gets only currentUser's posts
   const getPostData = async () => {
     const docRef = doc(db, "posts", "postList");
