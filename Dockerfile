@@ -13,5 +13,5 @@ ADD nginx.conf /etc/nginx/nginx.conf
 
 # COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /reactfinalproject/build /usr/share/nginx/html
-EXPOSE 5000
+EXPOSE 8080
 CMD ["nginx","-g","daemon off;"]
